@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Psy\Output\Theme;
 
 class CategoryController extends Controller
@@ -14,10 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category           = Category::all();
-        return view('dashboard.category.index', [
-            'category'      => $category,
-        ]);
+        return view('dashboard.category.index');
     }
 
     /**
@@ -25,7 +23,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category           = Category::all();
+        return view('dashboard.category.create', [
+            'category'      => $category,
+        ]);
     }
 
     /**
@@ -35,19 +36,24 @@ class CategoryController extends Controller
     {
 
         $request->validate([
-            'name'          => 'required',
-            'image'         => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
+            'name'              => 'required',
+            'seo_title'         => 'required',
+            'seo_description'   => 'required',
+            'seo_tags'          => 'required',
+            'image'             => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
         ]);
 
-        $imageName          = time() . '.' . $request->image->extension();
-        $request->image     ->move(public_path('Themes/Theme1/images/category'), $imageName);
+        $category                   = new Category();
 
-        $category           = new Category();
-        $category->name     = $request->name;
-        $category->image    = 'Themes/Theme1/images/category/' . $imageName;
-        $category->status   = $request->status;
-        $category           ->save();
-        return back()       ->with('success', 'Category created successfully');
+        $category->name             = $request->name;
+        $category->seo_title        = $request->seo_title;
+        $category->seo_description  = $request->seo_description;
+        $category->seo_tags         = $request->seo_tags;
+        $category->image            = Self::upload($request);
+        $category->status           = $request->status;
+        $category->slug             = Str::slug($request->name, '-');
+        $category->save();
+        return back()->with('success', 'Category created successfully');
     }
 
     /**
@@ -63,7 +69,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category           = Category::find($id);
+        $category = Category::find($id);
         return view('dashboard.category.edit', [
             'category'      => $category,
         ]);
@@ -76,11 +82,15 @@ class CategoryController extends Controller
     {
 
         $request->validate([
-            'name'          => 'required',
+            'name' => 'required',
         ]);
-        $category->name     = $request->name;
-        $category->status   = $request->status;
-        $oldImage           = $category->image;
+        $category->name             = $request->name;
+        $category->seo_title        = $request->seo_title;
+        $category->seo_description  = $request->seo_description;
+        $category->seo_tags         = $request->seo_tags;
+        $category->status           = $request->status;
+        $category->slug             = Str::slug($request->name, '-');
+        $oldImage                   = $category->image;
 
         if (file_exists($oldImage)) {
             unlink($oldImage);

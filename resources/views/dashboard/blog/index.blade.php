@@ -11,6 +11,11 @@
         <div class="container-fluid">
 
             <div class="row">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="" class="disabled">Blogs</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Create or Add Blog</a></li>
+                </ol>
                 <div class="col-lg-12">
                     <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf

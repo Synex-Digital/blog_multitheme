@@ -15,8 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blog               = Blog::all();
-        $category           = Category::all();
+        $blog = Blog::all();
+        $category = Category::all();
         return view('dashboard.blog.index', [
             'blog'          => $blog,
             'categories'    => $category,
@@ -28,8 +28,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $blog               = Blog::all();
-        $category           = Category::all();
+        $blog = Blog::all();
+        $category = Category::all();
         return view('dashboard.blog.create', [
             'blog'          => $blog,
             'categories'    => $category,
@@ -52,7 +52,7 @@ class BlogController extends Controller
             'image'             => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
         ]);
 
-        $blog                   = new Blog();
+        $blog = new Blog();
 
         $blog->category_id      = $request->category_id;
         $blog->author           = $request->author;
@@ -64,8 +64,8 @@ class BlogController extends Controller
         $blog->seo_tags         = $request->seo_tags;
         $blog->status           = $request->status;
         $blog->slug             = Str::slug($request->title, '-');
-        $blog                   ->save();
-        return back()           ->with('success', 'Blog created successfully');
+        $blog->save();
+        return back()->with('success', 'Blog created successfully');
 
     }
 
@@ -82,8 +82,8 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        $blog               = Blog::find($id);
-        $category           = Category::all();
+        $blog = Blog::find($id);
+        $category = Category::all();
         return view('dashboard.blog.edit', [
             'blog'          => $blog,
             'categories'    => $category,
@@ -105,8 +105,9 @@ class BlogController extends Controller
             'slug'              => 'required|min:3|max:255|unique:blogs',
         ]);
 
-        $blog->title            = $request->title;
+        $blog->category_id      = $request->category_id;
         $blog->author           = $request->author;
+        $blog->title            = $request->title;
         $blog->content          = $request->content;
         $blog->seo_title        = $request->seo_title;
         $blog->seo_description  = $request->seo_description;
@@ -114,17 +115,17 @@ class BlogController extends Controller
         $blog->status           = $request->status;
         $blog->slug             = Str::slug($request->title, '-');
 
-        $oldImage               = $blog->image;
+        $oldImage = $blog->image;
         if (file_exists($oldImage)) {
             unlink($oldImage);
             File::delete($oldImage);
         }
 
         if ($request->has('image')) {
-            $blog->image        = Self::upload($request);
+            $blog->image = Self::upload($request);
         }
         $blog->save();
-        return back()           ->with('success', 'Blog updated successfully');
+        return back()->with('success', 'Blog updated successfully');
 
     }
 
@@ -133,14 +134,14 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        $blog               = Blog::find($id);
-        $blog               ->delete();
-        return back()       ->with('danger', 'Blog deleted!!');
+        $blog = Blog::find($id);
+        $blog->delete();
+        return back()->with('danger', 'Blog deleted!!');
     }
 
     static function upload($request){
-        $imageName          ='Themes/Theme1/images/blog/'. time() . '.' . $request->image->extension();
-        $request->image     ->move(public_path('Themes/Theme1/images/blog'), $imageName);
+        $imageName ='Themes/Theme1/images/blog/'. time() . '.' . $request->image->extension();
+        $request->image->move(public_path('Themes/Theme1/images/blog'), $imageName);
         return $imageName;
     }
 }

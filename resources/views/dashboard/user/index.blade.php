@@ -3,6 +3,10 @@
 
     <div class="container-fluid">
         <div class="row">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Profile</a></li>
+            </ol>
             <div class="col-lg-12">
                 <div class="profile card card-body px-3 pt-3 pb-0">
                     <div class="profile-head">

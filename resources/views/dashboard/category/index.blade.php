@@ -1,83 +1,33 @@
 @extends('dashboard.layout.app')
 @section('content')
 
-        {{-- <div class="container-fluid"> --}}
+        <div class="container-fluid">
             <div class="row">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="" class="disabled">Category</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Create or Add Category</a></li>
+                </ol>
+
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
-                @if(session('danger'))
+                {{-- @if(session('danger'))
                     <div class="alert alert-danger">{{ session('danger') }}</div>
-                @endif
-                <div class="col-lg-7">
+                @endif --}}
+
+
+                <div class="col-lg-12">
+                    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">
-                                    Category List
-                                </h4>
+                                <h4 class="card-title">Add Category</h4>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-responsive-md">
-                                        <thead>
-                                            <tr>
-                                                {{-- <th style="width:50px;">
-                                                    <div class="form-check custom-checkbox checkbox-success check-lg me-3">
-                                                        <input type="checkbox" class="form-check-input" id="checkAll" required="">
-                                                        <label class="form-check-label" for="checkAll"></label>
-                                                    </div>
-                                                </th> --}}
-                                                <th><strong>Sl. No</strong></th>
-                                                <th><strong>Catergory Name</strong></th>
-                                                <th><strong>Status</strong></th>
-                                                <th><strong>Action</strong></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($category as $sl=>$categories)
-                                                <tr>
-                                                    {{-- <td>
-                                                        <div class="form-check custom-checkbox checkbox-success check-lg me-3">
-                                                            <input type="checkbox" class="form-check-input" id="customCheckBox2" required="">
-                                                            <label class="form-check-label" for="customCheckBox2"></label>
-                                                        </div>
-                                                    </td> --}}
-                                                    <td><strong>{{ $sl+1 }}</strong></td>
-
-                                                    <td><div class="d-flex align-items-center"><img src="{{ url('/'.$categories->image)}}" class="rounded-lg me-2" width="20" alt=""> <span class="w-space-no">{{ $categories->name }}</span></div></td>
-                                                    <td><span class="badge light badge-success">{{ $categories->status }}</span></td>
-
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <a href="{{ route('category.edit', $categories->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
-
-                                                            <form action="{{ route('category.destroy', $categories->id) }}" method="POST">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
-                                                            </form>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div class="col-lg-5">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Add Category</h4>
-                        </div>
-                        <div class="card-body">
-                            <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Name</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-12">
                                         <input type="text" class="form-control" @error('name') is-invalid @enderror" placeholder="Enter Category Name" name="name">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -86,6 +36,7 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Add Category Image</label>
                                     <input class="form-control" @error('image') is-invalid @enderror" type="file" id="formFile" name="image">
@@ -95,6 +46,7 @@
                                         </span>
                                     @enderror
                                 </div>
+
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Status</label>
                                     <div class="col-sm-9">
@@ -112,13 +64,56 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class='card-title'>SEO</h4>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">SEO Title</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" @error('seo_title') is-invalid @enderror" placeholder="Enter SEO title" name="seo_title">
+                                        @error('seo_title')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">SEO Description</label>
+                                    <textarea class="from-control" rows="5" @error('seo_description') is-invalid @enderror" name="seo_description"></textarea>
+                                    @error('seo_description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">SEO Tags</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" @error('seo_tags') is-invalid @enderror" placeholder="Enter SEO tags" name="seo_tags">
+                                        @error('seo_tags')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        
+                    </form>
                 </div>
             </div>
-        {{-- </div> --}}
+        </div>
 
 
 @endsection

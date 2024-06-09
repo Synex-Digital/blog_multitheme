@@ -23,7 +23,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
+            <a href="{{ route('dashboard')}}" class="brand-logo">
                 <img class="logo-abbr" src="{{ asset('Themes/Theme1/images/logo.png') }}" alt="">
                 <img class="logo-compact" src="{{ asset('Themes/Theme1/images/logo-text.png') }}" alt="">
                 <img class="brand-title" src="{{ asset('Themes/Theme1/images/logo-text.png') }}" alt="">
@@ -750,23 +750,27 @@
             <div class="deznav-scroll">
 				<ul class="metismenu" id="menu">
                     <li><a class="has-arrow ai-icon" href="{{ route('dashboard') }}" aria-expanded="false">
-							<i class="flaticon-381-networking"></i>
+							<i class="ti-home"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="{{ route('category.index') }}" aria-expanded="false">
-							<i class="flaticon-381-network"></i>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-381-layer-1"></i>
 							<span class="nav-text">Category</span>
 						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('category.index') }}">Create/Add Category</a></li>
+                            <li><a href="{{ route('category.create') }}">View Categories List</a></li>
 
+                        </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-381-notepad"></i>
 							<span class="nav-text">Blogs</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('blog.create') }}">View Blogs List</a></li>
                             <li><a href="{{ route('blog.index') }}">Create/Add Blogs</a></li>
+                            <li><a href="{{ route('blog.create') }}">View Blogs List</a></li>
 
                         </ul>
                     </li>

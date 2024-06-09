@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('parent_id')->nullable();
+            $table->string('seo_title');
+            $table->longText('seo_description');
+            $table->string('seo_tags');
             $table->string('image')->nullable();
             $table->enum('status',['active','inactive'])->default('inactive');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

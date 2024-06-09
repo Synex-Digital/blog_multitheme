@@ -2,8 +2,13 @@
 @section('content')
 
 
-        <div class="container-fluid">
+        {{-- <div class="container-fluid"> --}}
             <div class="row">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="" class="disabled">Blogs</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">View Blogs List</a></li>
+                </ol>
                 <div class="col-lg-12">
                     <div class="card">
                         @if(session('danger'))
@@ -28,7 +33,9 @@
                                             <th><strong>Category Name</strong></th>
                                             <th><strong>Author's Name</strong></th>
                                             <th><strong>Image</strong></th>
+                                            <th><strong>SEO Title</strong></th>
                                             <th><strong>SEO Description</strong></th>
+                                            <th><strong>SEO Tags</strong></th>
                                             <th><strong>Status</strong></th>
                                             <th><strong>Action</strong></th>
                                         </tr>
@@ -52,9 +59,13 @@
 
                                                 <td><div class="d-flex align-items-center"><img src="{{ url('/'. $blogs->image)}}" class="rounded-lg me-2" width="20" alt=""></td>
 
+                                                <td><span class="w-space-no">{{ $blogs->seo_title }}</span></td>
+
                                                 <td><span class="w-space-no">{{ $blogs->seo_description }}</span></td>
 
-                                                <td><span class="badge light badge-success">{{ $blogs->status }}</span></td>
+                                                <td><span class="w-space-no">{{ $blogs->seo_tags }}</span></td>
+
+                                                <td><span class="badge light {{ $blogs->status == 'inactive' ? 'badge-danger' : 'badge light' }} badge-success">{{ $blogs->status }}</span></td>
 
                                                 <td>
                                                     <div class="d-flex">
@@ -76,7 +87,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
 
 
 
