@@ -33,9 +33,9 @@
                                             <th><strong>Category Name</strong></th>
                                             <th><strong>Author's Name</strong></th>
                                             <th><strong>Image</strong></th>
-                                            <th><strong>SEO Title</strong></th>
+                                            {{-- <th><strong>SEO Title</strong></th>
                                             <th><strong>SEO Description</strong></th>
-                                            <th><strong>SEO Tags</strong></th>
+                                            <th><strong>SEO Tags</strong></th> --}}
                                             <th><strong>Status</strong></th>
                                             <th><strong>Action</strong></th>
                                         </tr>
@@ -59,17 +59,19 @@
 
                                                 <td><div class="d-flex align-items-center"><img src="{{ url('/'. $blogs->image)}}" class="rounded-lg me-2" width="20" alt=""></td>
 
-                                                <td><span class="w-space-no">{{ $blogs->seo_title }}</span></td>
+                                                {{-- <td><span class="w-space-no">{{ $blogs->seo_title }}</span></td>
 
                                                 <td><span class="w-space-no">{{ $blogs->seo_description }}</span></td>
 
-                                                <td><span class="w-space-no">{{ $blogs->seo_tags }}</span></td>
+                                                <td><span class="w-space-no">{{ $blogs->seo_tags }}</span></td> --}}
 
                                                 <td><span class="badge light {{ $blogs->status == 'inactive' ? 'badge-danger' : 'badge light' }} badge-success">{{ $blogs->status }}</span></td>
 
                                                 <td>
                                                     <div class="d-flex">
                                                         <a href="{{ route('blog.edit', $blogs->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
+
+                                                        <a href="{{ route('blog.show', $blogs->id) }}" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>
 
                                                         <form action="{{ route('blog.destroy', $blogs->id) }}" method="POST">
                                                             @method('DELETE')
@@ -87,6 +89,7 @@
                     </div>
                 </div>
             </div>
+
         {{-- </div> --}}
 
 

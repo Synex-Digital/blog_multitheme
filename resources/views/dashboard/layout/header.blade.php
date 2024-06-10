@@ -774,6 +774,30 @@
 
                         </ul>
                     </li>
+
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-381-settings-6"></i>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('config.index') }}">Configurations</a></li>
+                            <li><a href="{{ route('social.index') }}">Social Links</a></li>
+                            <li><a href="{{ route('custom_code.index') }}">Custom Codes</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="ti-world"></i>
+                            <span class="nav-text">SEO</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('seo.index') }}">Create SEO for pages</a></li>
+                            <li><a href="{{ route('seo.create') }}">View SEO List</a></li>
+
+                        </ul>
+                    </li>
+
                     {{-- <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-381-internet"></i>
 							<span class="nav-text">Bootstrap</span>

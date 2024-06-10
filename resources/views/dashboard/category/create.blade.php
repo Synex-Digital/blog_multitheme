@@ -31,9 +31,9 @@
                                     </th> --}}
                                     <th><strong>Sl. No</strong></th>
                                     <th><strong>Catergory Name</strong></th>
-                                    <th><strong>SEO Title</strong></th>
+                                    {{-- <th><strong>SEO Title</strong></th>
                                     <th><strong>SEO Description</strong></th>
-                                    <th><strong>SEO Tags</strong></th>
+                                    <th><strong>SEO Tags</strong></th> --}}
                                     <th><strong>Status</strong></th>
                                     <th><strong>Action</strong></th>
                                 </tr>
@@ -51,10 +51,10 @@
 
                                         <td><div class="d-flex align-items-center"><img src="{{ url('/'.$categories->image)}}" class="rounded-lg me-2" width="20" alt=""> <span class="w-space-no">{{ $categories->name }}</span></div></td>
 
-                                        <td><span class="w-space-no">{{ $categories->seo_title }}</span></td>
+                                        {{-- <td><span class="w-space-no">{{ $categories->seo_title }}</span></td>
 
                                         <td><span class="w-space-no">{{ $categories->seo_description }}</span></td>
-                                        <td><span class="w-space-no">{{ $categories->seo_tags }}</span></td>
+                                        <td><span class="w-space-no">{{ $categories->seo_tags }}</span></td> --}}
 
                                         <td><span class="badge light {{ $categories->status == 'inactive' ? 'badge-danger' : 'badge light' }} badge-success">{{ $categories->status }}</span></td>
 

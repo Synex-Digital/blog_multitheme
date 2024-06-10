@@ -74,7 +74,12 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $blog = Blog::find($id);
+        $category = Category::all();
+        return view('dashboard.blog.show', [
+            'blog'          => $blog,
+            'categories'    => $category,
+        ]);
     }
 
     /**
