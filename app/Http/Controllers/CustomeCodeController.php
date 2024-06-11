@@ -12,8 +12,8 @@ class CustomeCodeController extends Controller
      */
     public function index()
     {
-        $custom_code = CustomCode::all();
-        return view('dashboard.custom_code.index', [
+        $custom_code = CustomCode::first();
+        return view('dashboard.custom_code.index',[
             'custom_code' => $custom_code
         ]);
     }
@@ -31,7 +31,22 @@ class CustomeCodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $config = CustomCode::get();
+
+        if($config->count() <  1){
+            $new = new CustomCode();
+            $new->header = $request->header;
+            $new->footer = $request->footer;
+            $new->save();
+            return back()->with('success','Custome code created successfully');
+        }
+        else{
+            $old = CustomCode::first();
+            $old->header = $request->header;
+            $old->footer = $request->footer;
+            $old->save();
+            return back()->with('success','Custom code updated successfully');
+        }
     }
 
     /**

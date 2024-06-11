@@ -2,7 +2,7 @@
 @section('content')
 
 
-        {{-- <div class="container-fluid"> --}}
+        <div class="container-fluid">
             <div class="row">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
@@ -90,7 +90,7 @@
                 </div>
             </div>
 
-        {{-- </div> --}}
+        </div>
 
 
 

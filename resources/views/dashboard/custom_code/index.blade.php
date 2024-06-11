@@ -12,12 +12,15 @@
                     <div class="card-header">
                         <h4 class="card-title">Custom Codes</h4>
                     </div>
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
                     <div class="card-body">
                         <form action="{{ route('custom_code.store') }}" method="POST">
                         @csrf
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Header</label>
-                                <textarea class="from-control" rows="5" @error('header') is-invalid @enderror" name="header"></textarea>
+                                <textarea class="from-control custom-code" rows="5" @error('header') is-invalid @enderror" name="header" value="">{{ $custom_code?$custom_code->header:''}}</textarea>
                                 @error('header')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -27,7 +30,8 @@
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Footer</label>
-                                <textarea class="from-control" rows="5" @error('footer') is-invalid @enderror" name="footer"></textarea>
+                                <textarea class="from-control custom-code" rows="5" @error('footer') is-invalid @enderror" name="footer" value="">{{ $custom_code?$custom_code->footer:''}}</textarea>
+
                                 @error('footer')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

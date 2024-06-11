@@ -1,4 +1,4 @@
-
+    
 
     <!--*******************
         Preloader start
@@ -24,7 +24,7 @@
         ***********************************-->
         <div class="nav-header">
             <a href="{{ route('dashboard')}}" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset('Themes/Theme1/images/logo.png') }}" alt="">
+                <img class="logo-abbr" src="{{ url('/'.$config->logo) }}" alt="">
                 <img class="logo-compact" src="{{ asset('Themes/Theme1/images/logo-text.png') }}" alt="">
                 <img class="brand-title" src="{{ asset('Themes/Theme1/images/logo-text.png') }}" alt="">
             </a>
@@ -780,7 +780,8 @@
                             <span class="nav-text">Settings</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('config.index') }}">Configurations</a></li>
+                            <li><a href="{{ route('config.index') }}">Add Configurations</a></li>
+                            <li><a href="{{ route('config.create') }}">View Configurations</a></li>
                             <li><a href="{{ route('social.index') }}">Social Links</a></li>
                             <li><a href="{{ route('custom_code.index') }}">Custom Codes</a></li>
 

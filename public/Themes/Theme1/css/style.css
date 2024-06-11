@@ -25452,6 +25452,11 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   background-color: #007A64;
   box-shadow: none; }
 
+.custom-code{
+    background: #071524;
+    color: white;
+}
+
 .pignose-calendar .pignose-calendar-top {
   box-shadow: none;
   border-bottom: 0; }

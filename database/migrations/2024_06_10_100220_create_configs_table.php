@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('name');
             $table->string('email');
-            $table->string('adddress');
+            $table->string('address');
             $table->string('phone');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();

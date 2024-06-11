@@ -8,7 +8,7 @@
 <!-- Title -->
 <title></title>
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('Themes/Theme1/images/favicon.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ url('/'. $config->favicon) }}">
 {{-- <link href="{{ asset('Themes/Theme1/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet"> --}}
 {{-- <link rel="stylesheet" href="{{ asset('Themes/Theme1/vendor/chartist/css/chartist.min.css') }}"> --}}
 {{-- <link href="{{ asset('Themes/Theme1/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet"> --}}

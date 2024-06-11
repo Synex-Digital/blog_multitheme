@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    @php
+        $config = App\Models\Config::first();
+    @endphp
 <head>
     @include('dashboard.layout.headerlink')
     @yield('style')
