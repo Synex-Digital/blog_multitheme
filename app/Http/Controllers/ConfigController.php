@@ -126,14 +126,14 @@ class ConfigController extends Controller
     }
 
     static function uploadLogo($request){
-        $imageName ='Themes/Theme1/images/config_pics/logo/'. time() . '.' . $request->logo->extension();
-        $request->logo->move(public_path('Themes/Theme1/images/config_pics/logo'), $imageName);
+        $imageName ='dashboards/Theme1/images/config_pics/logo/'. time() . '.' . $request->logo->extension();
+        $request->logo->move(public_path('dashboards/Theme1/images/config_pics/logo'), $imageName);
         return $imageName;
     }
 
     static function uploadFavicon($request){
-        $imageName ='Themes/Theme1/images/config_pics/favicon/'. time() . '.' . $request->favicon->extension();
-        $request->favicon->move(public_path('Themes/Theme1/images/config_pics/favicon'), $imageName);
+        $imageName ='dashboards/Theme1/images/config_pics/favicon/'. time() . '.' . $request->favicon->extension();
+        $request->favicon->move(public_path('dashboards/Theme1/images/config_pics/favicon'), $imageName);
         return $imageName;
     }
 }

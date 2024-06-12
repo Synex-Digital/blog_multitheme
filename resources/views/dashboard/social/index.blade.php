@@ -10,6 +10,9 @@
 
                 <div class="col-lg-5">
                     <div class="card">
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
                         <div class="card-header">
                             <h4 class="card-title">Social Links</h4>
                         </div>

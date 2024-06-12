@@ -15,7 +15,7 @@
                         </div>
                         <div class="profile-info">
                             <div class="profile-photo">
-                                <img src="{{asset('Themes/Theme1/images/profile/admin.jpg')}}" class="img-fluid rounded-circle" alt="">
+                                <img src="{{asset('dashboards/Theme1/images/profile/admin.jpg')}}" class="img-fluid rounded-circle" alt="">
                             </div>
                             <div class="profile-details">
                                 <div class="profile-name px-3 pt-2">

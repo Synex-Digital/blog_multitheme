@@ -114,8 +114,8 @@ class CategoryController extends Controller
     }
 
     static function upload($request){
-        $imageName ='Themes/Theme1/images/category/' . time() . '.' . $request->image->extension();
-        $request->image->move(public_path('Themes/Theme1/images/category'), $imageName);
+        $imageName ='dashboards/Theme1/images/category/' . time() . '.' . $request->image->extension();
+        $request->image->move(public_path('dashboards/Theme1/images/category'), $imageName);
         return $imageName;
     }
 }

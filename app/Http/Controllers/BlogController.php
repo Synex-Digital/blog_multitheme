@@ -145,8 +145,8 @@ class BlogController extends Controller
     }
 
     static function upload($request){
-        $imageName ='Themes/Theme1/images/blog/'. time() . '.' . $request->image->extension();
-        $request->image->move(public_path('Themes/Theme1/images/blog'), $imageName);
+        $imageName ='dashboards/Theme1/images/blog/'. time() . '.' . $request->image->extension();
+        $request->image->move(public_path('dashboards/Theme1/images/blog'), $imageName);
         return $imageName;
     }
 }

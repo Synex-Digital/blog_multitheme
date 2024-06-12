@@ -96,8 +96,8 @@
 	<!-- Title -->
 	<title>Login Page</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('Themes/Theme1/images/favicon.png') }}">
-  <link href="{{ asset('Themes/Theme1/css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('dashboards/Theme1/images/favicon.png') }}">
+  <link href="{{ asset('dashboards/Theme1/css/style.css') }}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
 </head>
 
@@ -174,10 +174,10 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-       <script src="{{ asset('Themes/Theme1/vendor/global/global.min.js') }}"></script>
-	<script src="{{ asset('Themes/Theme1/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-     <script src="{{ asset('Themes/Theme1/js/custom.min.js') }}"></script>
-    <script src="{{ asset('Themes/Theme1/js/deznav-init.js') }}"></script>
+       <script src="{{ asset('dashboards/Theme1/vendor/global/global.min.js') }}"></script>
+	<script src="{{ asset('dashboards/Theme1/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+     <script src="{{ asset('dashboards/Theme1/js/custom.min.js') }}"></script>
+    <script src="{{ asset('dashboards/Theme1/js/deznav-init.js') }}"></script>
 
 </body>
 

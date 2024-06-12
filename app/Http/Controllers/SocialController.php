@@ -41,8 +41,9 @@ class SocialController extends Controller
         $social = new Social();
         $social->logo          = Self::upload($request);
         $social->link          = $request->link;
+        $social->status        = $request->status;
         $social->save();
-        return back()->with('success', 'Link created successfully');
+        return back()->with('success', 'Social Link created successfully');
     }
 
     /**
@@ -100,8 +101,8 @@ class SocialController extends Controller
     }
 
     static function upload($request){
-        $imageName ='Themes/Theme1/images/social/'. time() . '.' . $request->logo->extension();
-        $request->logo->move(public_path('Themes/Theme1/images/social'), $imageName);
+        $imageName ='dashboards/Theme1/images/social/'. time() . '.' . $request->logo->extension();
+        $request->logo->move(public_path('dashboards/Theme1/images/social'), $imageName);
         return $imageName;
     }
 }
