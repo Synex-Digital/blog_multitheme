@@ -4,7 +4,7 @@
     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
     <li class="breadcrumb-item"><a href="" class="disabled">Settings</a></li>
     <li class="breadcrumb-item"><a href="{{ route('social.index') }}">Social Links</a></li>
-    <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit Social Link</a></li>
+    <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
 </ol>
     <div class="container-fluid">
         <div class="row">

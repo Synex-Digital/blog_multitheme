@@ -120,13 +120,15 @@ class BlogController extends Controller
         $blog->status           = $request->status;
         $blog->slug             = Str::slug($request->title, '-');
 
-        $oldImage = $blog->image;
-        if (file_exists($oldImage)) {
-            unlink($oldImage);
-            File::delete($oldImage);
-        }
+
 
         if ($request->has('image')) {
+            $oldImage = $blog->image;
+
+            if (file_exists($oldImage)) {
+                unlink($oldImage);
+                File::delete($oldImage);
+            }
             $blog->image = Self::upload($request);
         }
         $blog->save();

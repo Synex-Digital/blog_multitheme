@@ -5,8 +5,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="" class="disabled">SEO</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('seo.create') }}">View SEO List</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit SEO</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('seo.create') }}">View</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
             </ol>
             @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>

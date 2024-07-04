@@ -52,8 +52,9 @@
     @include('Themes.theme1.layout.headerNav')
 
     {{-- main body --}}
-
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
     {{-- main body --}}
 
 

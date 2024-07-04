@@ -11,8 +11,9 @@ class BlogSingleController extends Controller
     public function index(){
         $blog = Blog::all();
         return view('Themes.theme1.pages.blog-single', [
-        'blog' => $blog
-    ]);
+            'blog' => $blog
+        ]);
     }
+
 
 }

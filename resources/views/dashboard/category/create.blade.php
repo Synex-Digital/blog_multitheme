@@ -5,7 +5,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
             <li class="breadcrumb-item"><a href="" class="disabled">Category</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">View Categories List</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">View</a></li>
         </ol>
         <div class="col-lg-12">
             <div class="card">

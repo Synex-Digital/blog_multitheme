@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $category           = Category::all();
+        $category = Category::all();
         return view('dashboard.category.create', [
             'category'      => $category,
         ]);
@@ -43,7 +43,7 @@ class CategoryController extends Controller
             'image'             => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
         ]);
 
-        $category                   = new Category();
+        $category = new Category();
 
         $category->name             = $request->name;
         $category->seo_title        = $request->seo_title;
@@ -71,7 +71,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         return view('dashboard.category.edit', [
-            'category'      => $category,
+            'category' => $category,
         ]);
     }
 
@@ -108,9 +108,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category           = Category::find($id);
-        $category           ->delete();
-        return back()       ->with('danger', 'Category deleted!!');
+        $category = Category::find($id);
+        $category->delete();
+        return back()->with('danger', 'Category deleted!!');
     }
 
     static function upload($request){

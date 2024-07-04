@@ -3,8 +3,8 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
     <li class="breadcrumb-item"><a href="" class="disabled">Blogs</a></li>
-    <li class="breadcrumb-item active"><a href="{{ route('blog.create') }}">View Blogs List</a></li>
-    <li class="breadcrumb-item active"><a href="javascript:void(0)">Blog Preview</a></li>
+    <li class="breadcrumb-item active"><a href="{{ route('blog.create') }}">View</a></li>
+    <li class="breadcrumb-item active"><a href="javascript:void(0)">Preview</a></li>
 </ol>
 {{-- H:i --}}
     <div class="container-fluid">
