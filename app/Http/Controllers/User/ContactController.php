@@ -9,13 +9,25 @@ use App\Models\Blog;
 class ContactController extends Controller
 {
     public function contacts(){
-        return view('Themes.theme1.pages.contact');
+        $categories = Category::get();
+        return view('Themes.theme1.pages.contact', [
+            'categories' => $categories,
+        ]);
     }
 
     public function abouts(){
         $blog_item = Blog::get();
         $categories = Category::get();
         return view('Themes.theme1.pages.about', [
+            'blog_item' => $blog_item,
+            'categories' => $categories,
+        ]);
+    }
+
+    public function policys(){
+        $blog_item = Blog::get();
+        $categories = Category::get();
+        return view('Themes.theme1.pages.policy', [
             'blog_item' => $blog_item,
             'categories' => $categories,
         ]);

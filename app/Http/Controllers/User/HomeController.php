@@ -13,17 +13,22 @@ class HomeController extends Controller
     public function index(){
         $themes = Themes::where('status','active')->first();
         $blog_items = Blog::get();
-        $categories = Category::get();
+        $categoryBlog = Category::get();
+        $category = Category::where('status','active')->get();
+
         if ($themes) {
             return view("Themes.$themes->name.index",[
                 'blog_items' => $blog_items,
-                'categories' => $categories,
+                'categoryBlog' => $categoryBlog,
+                'category' => $category,
             ]);
         }
         else {
             return view('Themes.theme1.index', [
                 'blog_items' => $blog_items,
-                'categories' => $categories,
+                'categoryBlog' => $categoryBlog,
+                'category' => $category,
+
             ]);
         }
     }

@@ -14,8 +14,8 @@
 					<!-- featured post large -->
 					<div class="post featured-post-lg">
 						<div class="details clearfix">
-							<a href="{{ route('categories') }}" class="category-badge">Food</a>
-							<h2 class="post-title"><a href="{{ route('blog-single') }}">Roasted Yukon Gold Potatoes</a></h2>
+							<a href="{{ route('categories', $categoryBlog->first()->slug) }}" class="category-badge">Food</a>
+							<h2 class="post-title"><a href="#">Roasted Yukon Gold Potatoes</a></h2>
 							<ul class="meta list-inline mb-0">
 								<li class="list-inline-item"><a href="#">Karen</a></li>
 								<li class="list-inline-item">10 June 2024</li>
@@ -50,14 +50,14 @@
 
                                     <div class="post post-list-sm circle">
                                         <div class="thumb circle">
-                                            <a href="{{ route('blog-single') }}">
+                                            <a href="{{ route('blog_slug', $blog->slug) }}">
                                                 <div class="inner">
                                                     <img src="{{ url('/') }}/{{ $blog->image }}" alt="post-title" />
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="details clearfix">
-                                            <h6 class="post-title my-0"><a href="{{ route('blog-single') }}">{{ $blog->title }}</a></h6>
+                                            <h6 class="post-title my-0"><a href="{{ route('blog_slug', $blog->slug) }}">{{ $blog->title }}</a></h6>
                                             <ul class="meta list-inline mt-1 mb-0">
                                                 <li class="list-inline-item">{{ $blog->updated_at->format('d/m/Y') }}</li>
                                             </ul>
@@ -70,14 +70,14 @@
 								<!-- post -->
 								<div class="post post-list-sm circle">
 									<div class="thumb circle">
-										<a href="{{ route('blog-single') }}">
+										<a href="{{ route('blog_slug', $blog->slug) }}">
 											<div class="inner">
 												<img src="{{ url('/') }}/{{ $blog->image }}" alt="post-title" />
 											</div>
 										</a>
 									</div>
 									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">{{$blog->title}}</a></h6>
+										<h6 class="post-title my-0"><a href="{{ route('blog_slug', $blog->slug) }}">{{$blog->title}}</a></h6>
 										<ul class="meta list-inline mt-1 mb-0">
 											<li class="list-inline-item">{{ $blog->updated_at->format('d/m/Y') }}</li>
 										</ul>
@@ -106,99 +106,36 @@
 					<!-- section header -->
 					<div class="section-header">
 						<h3 class="section-title">Editor’s Pick</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
+						<img src="{{ asset('Themes/theme1/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 
 					<div class="padding-30 rounded bordered">
 						<div class="row gy-5">
-							<div class="col-sm-6">
-								<!-- post -->
-								<div class="post">
-									<div class="thumb rounded">
-										<a href="category.html" class="category-badge position-absolute">Lifestyle</a>
-										<span class="post-format">
-											<i class="icon-picture"></i>
-										</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-lg.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<ul class="meta list-inline mt-4 mb-0">
-										<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-										<li class="list-inline-item">29 March 2021</li>
-									</ul>
-									<h5 class="post-title mb-3 mt-3"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h5>
-									<p class="excerpt mb-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy</p>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="thumb rounded">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="thumb rounded">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="thumb rounded">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="thumb rounded">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-							</div>
+                            @foreach ($blog_items as $blog)
+                                <div class="col-sm-6">
+                                    <!-- post -->
+                                    <div class="post">
+                                        <div class="thumb rounded">
+                                            <a href="{{ route('categories', $categoryBlog->first()->slug) }}" class="category-badge position-absolute">{{ $blog->category->name }}</a>
+                                            <span class="post-format">
+                                                <i class="icon-picture"></i>
+                                            </span>
+                                            <a href="{{ route('blog_slug', $blog->slug) }}">
+                                                <div class="inner">
+                                                    <img src="{{ url('/') }}/{{ $blog->image }}" alt="post-title" />
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <ul class="meta list-inline mt-4 mb-0">
+                                            <li class="list-inline-item"><a href="#">{{ $blog->author }}</a></li>
+                                            <li class="list-inline-item">{{ $blog->updated_at->format('d/m/Y') }}</li>
+                                        </ul>
+                                        <h5 class="post-title mb-3 mt-3"><a href="{{ route('blog_slug', $blog->slug) }}">{{ $blog->title }}</a></h5>
+                                        <p class="excerpt mb-0">{{ $blog->seo_description }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+
 						</div>
 					</div>
 
@@ -208,13 +145,13 @@
 					<div class="ads-horizontal text-md-center">
 						<span class="ads-title">- Sponsored Ad -</span>
 						<a href="#">
-							<img src="images/ads/ad-750.png" alt="Advertisement" />
+							<img src="{{ asset('Themes/theme1/images/ads/ad-750.png')}}" alt="Advertisement" />
 						</a>
 					</div>
 
 					<div class="spacer" data-height="50"></div>
 
-					<!-- section header -->
+					{{-- <!-- section header -->
 					<div class="section-header">
 						<h3 class="section-title">Trending</h3>
 						<img src="images/wave.svg" class="wave" alt="wave" />
@@ -579,7 +516,7 @@
 							<button class="btn btn-simple">Load More</button>
 						</div>
 
-					</div>
+					</div> --}}
 
 				</div>
 				<div class="col-lg-4">
@@ -589,7 +526,7 @@
 						<!-- widget about -->
 						<div class="widget rounded">
 							<div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
-								<img src="images/logo.svg" alt="logo" class="mb-4" />
+								<img src="{{ asset('Themes/theme1/images/logo.svg')}}" alt="logo" class="mb-4" />
 								<p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
 								<ul class="social-icons list-unstyled list-inline mb-0">
 									<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -610,56 +547,25 @@
 							</div>
 							<div class="widget-content">
 								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">1</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">2</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">3</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/tabs-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
+                                @foreach ($blog_items as $sl => $blog)
+                                    <div class="post post-list-sm circle">
+                                        <div class="thumb circle">
+                                            <span class="number">{{ $sl+1 }}</span>
+                                            <a href="{{ route('blog_slug', $blog->slug) }}">
+                                                <div class="inner">
+                                                    <img src="{{ url('/') }}/{{ $blog->image }}" alt="post-title" />
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details clearfix">
+                                            <h6 class="post-title my-0"><a href="{{ route('blog_slug', $blog->slug) }}">{{ $blog->title }}</a></h6>
+                                            <ul class="meta list-inline mt-1 mb-0">
+                                                <li class="list-inline-item">{{ $blog->updated_at->format('d/m/Y') }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endforeach
+
 							</div>
 						</div>
 
@@ -671,118 +577,23 @@
                             </div>
                             <div class="widget-content">
                                 <ul class="list">
-                                    @foreach ($categories as $category)
-                                        <li><a href="#">{{ $category->name }}</a><span>{{ $category->blogs ? $category->blogs->count(): '0' }}</span></li>
+                                    @foreach ($category as $category)
+                                        <li><a href="{{ route('categories', $category->slug) }}">{{ $category->name }}</a><span>{{ $category->blogs ? $category->blogs->count(): '0' }}</span></li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
 
-						<!-- widget newsletter -->
-						<div class="widget rounded">
-							<div class="widget-header text-center">
-								<h3 class="widget-title">Newsletter</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
-								<form>
-									<div class="mb-2">
-										<input class="form-control w-100 text-center" placeholder="Email address…" type="email">
-									</div>
-									<button class="btn btn-default btn-full" type="submit">Sign Up</button>
-								</form>
-								<span class="newsletter-privacy text-center mt-3">By signing up, you agree to our <a href="#">Privacy Policy</a></span>
-							</div>
-						</div>
-
-						<!-- widget post carousel -->
-						<div class="widget rounded">
-							<div class="widget-header text-center">
-								<h3 class="widget-title">Celebration</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<div class="post-carousel-widget">
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="thumb rounded">
-											<a href="category.html" class="category-badge position-absolute">How to</a>
-											<a href="blog-single.html">
-												<div class="inner">
-													<img src="images/widgets/widget-carousel-1.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="post-title mb-0 mt-4"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
-										<ul class="meta list-inline mt-2 mb-0">
-											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="thumb rounded">
-											<a href="category.html" class="category-badge position-absolute">Trending</a>
-											<a href="blog-single.html">
-												<div class="inner">
-													<img src="images/widgets/widget-carousel-2.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="post-title mb-0 mt-4"><a href="blog-single.html">Master The Art Of Nature With These 7 Tips</a></h5>
-										<ul class="meta list-inline mt-2 mb-0">
-											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-									<!-- post -->
-									<div class="post post-carousel">
-										<div class="thumb rounded">
-											<a href="category.html" class="category-badge position-absolute">How to</a>
-											<a href="blog-single.html">
-												<div class="inner">
-													<img src="images/widgets/widget-carousel-1.jpg" alt="post-title" />
-												</div>
-											</a>
-										</div>
-										<h5 class="post-title mb-0 mt-4"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
-										<ul class="meta list-inline mt-2 mb-0">
-											<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- carousel arrows -->
-								<div class="slick-arrows-bot">
-									<button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
-									<button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i class="icon-arrow-right"></i></button>
-								</div>
-							</div>
-						</div>
 
 						<!-- widget advertisement -->
-						<div class="widget no-container rounded text-md-center">
-							<span class="ads-title">- Sponsored Ad -</span>
-							<a href="#" class="widget-ads">
-								<img src="images/ads/ad-360.png" alt="Advertisement" />
-							</a>
-						</div>
+						{{-- <div class="widget no-container rounded text-md-center">
+                            <span class="ads-title">- Sponsored Ad -</span>
+                            <a href="#" class="widget-ads">
+                                <img src="{{ asset('Themes/theme1/images/ads/ad-360.png') }}" alt="Advertisement" />
+                            </a>
+                        </div> --}}
 
-						<!-- widget tags -->
-						<div class="widget rounded">
-							<div class="widget-header text-center">
-								<h3 class="widget-title">Tag Clouds</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<a href="#" class="tag">#Trending</a>
-								<a href="#" class="tag">#Video</a>
-								<a href="#" class="tag">#Featured</a>
-								<a href="#" class="tag">#Gallery</a>
-								<a href="#" class="tag">#Celebrities</a>
-							</div>
-						</div>
+
 
 					</div>
 

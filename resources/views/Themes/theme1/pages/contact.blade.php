@@ -35,7 +35,7 @@
                         <span class="icon icon-map"></span>
                         <div class="details">
                             <h3 class="mb-0 mt-0">Location</h3>
-                            <p class="mb-0">California, USA</p>
+                            <p class="mb-0">Dhaka, Bangladesh</p>
                         </div>
                     </div>
                 </div>

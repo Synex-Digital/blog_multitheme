@@ -1,3 +1,9 @@
+@php
+
+use App\Models\Category;
+$category = Category::where('status','active')->get();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -5,7 +11,7 @@
 	<title>Katen - Minimal Blog & Magazine HTML Theme</title>
 	<meta name="description" content="Katen - Minimal Blog & Magazine HTML Theme">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('Themes/theme1/images/favicon.png') }}">
     @include('Themes.theme1.layout.headerlink')
     @yield('style')
     {{-- this is for custom codes --}}
@@ -70,35 +76,34 @@
 
 	<!-- logo -->
 	<div class="logo">
-		<img src="images/logo.svg" alt="Katen" />
+		<img src="{{ asset('Themes/theme1/images/logo.svg') }}" alt="Katen" />
 	</div>
 
 	<!-- menu -->
 	<nav>
 		<ul class="vertical-menu">
 			<li class="active">
-				<a href="index.html">Home</a>
-				<ul class="submenu">
+				<a href="{{ route('home') }}">Home</a>
+				{{-- <ul class="submenu">
 					<li><a href="index.html">Magazine</a></li>
 					<li><a href="personal.html">Personal</a></li>
 					<li><a href="personal-alt.html">Personal Alt</a></li>
 					<li><a href="minimal.html">Minimal</a></li>
 					<li><a href="classic.html">Classic</a></li>
-				</ul>
+				</ul> --}}
 			</li>
-			<li><a href="category.html">Lifestyle</a></li>
-			<li><a href="category.html">Inspiration</a></li>
+
 			<li>
-				<a href="#">Pages</a>
+				<a href="#">Categories</a>
 				<ul class="submenu">
-					<li><a href="category.html">Category</a></li>
-					<li><a href="blog-single.html">Blog Single</a></li>
-					<li><a href="blog-single-alt.html">Blog Single Alt</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contact.html">Contact</a></li>
+                    @foreach ($category as $cat)
+                        <li><a href="{{ route('categories', $cat->slug) }}">{{ $cat->name }}</a></li>
+                    @endforeach
 				</ul>
 			</li>
-			<li><a href="contact.html">Contact</a></li>
+            <li><a href="{{ route('policy') }}">Policy</a></li>
+			<li><a href="{{ route('about') }}">About</a></li>
+			<li><a href="{{ route('contact') }}">Contact</a></li>
 		</ul>
 	</nav>
 
@@ -108,7 +113,6 @@
 		<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
 		<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
 		<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-		<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
 		<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
 	</ul>
 </div>

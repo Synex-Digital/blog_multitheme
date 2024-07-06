@@ -20,10 +20,12 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/',[UserHomeController::class, 'index'])->name('home');
 
-Route::get('/blog-single', [BlogSingleController::class, 'index'])->name('blog-single');
-Route::get('/categories', [CategoriesFrontController::class, 'cat'])->name('categories');
+Route::get('/blog-single', [BlogSingleController::class, 'blog_single'])->name('blog_single');
+Route::get('/blog/single/{slug}', [BlogSingleController::class, 'blog_slug'])->name('blog_slug');
+Route::get('/categories/{slug}', [CategoriesFrontController::class, 'cat'])->name('categories');
 Route::get('/contact', [ContactController::class, 'contacts'])->name('contact');
 Route::get('/about', [ContactController::class, 'abouts'])->name('about');
+Route::get('/policy', [ContactController::class, 'policys'])->name('policy');
 
 // Route::get('/dashboard', function() {
 //     return view('dashboard.index');

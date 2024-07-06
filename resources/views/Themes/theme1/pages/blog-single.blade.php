@@ -20,26 +20,27 @@
             <div class="col-lg-8">
                 <!-- post single -->
                 <div class="post post-single">
-                    @foreach ($blog as $blogs )
+
+
 
                     <!-- post header -->
                         <div class="post-header">
-                            <h1 class="title mt-0 mb-3">{{ $blogs->title }}</h1>
+                            <h1 class="title mt-0 mb-3">{{ $blog_view->title }}</h1>
                             <ul class="meta list-inline mb-0">
-                                <li class="list-inline-item"><a href="#">{{ $blogs->author }}</a></li>
+                                <li class="list-inline-item"><a href="#">{{ $blog_view->author }}</a></li>
                                 <li class="list-inline-item"><a href="#">Trending</a></li>
-                                <li class="list-inline-item">{{ $blogs->updated_at->format('d/m/Y') }}</li>
+                                <li class="list-inline-item">{{ $blog_view->updated_at->format('d/m/Y') }}</li>
                             </ul>
                         </div>
                         <!-- featured image -->
                         <div class="featured-image">
-                            <img src="{{ url('/') }}/{{ $blogs->image }}" alt="post-title" />
+                            <img src="{{ url('/') }}/{{ $blog_view->image }}" alt="post-title" />
                         </div>
                         <!-- post content -->
                         <div class="post-content clearfix">
-                            <p>{!! $blogs->content !!}</p>
+                            <p>{!! $blog_view->content !!}</p>
                         </div>
-                    @endforeach
+
                 </div>
             </div>
         </div>

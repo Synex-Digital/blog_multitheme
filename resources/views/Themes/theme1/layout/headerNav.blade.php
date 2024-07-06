@@ -9,22 +9,23 @@
 					<!-- menus -->
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item dropdown active">
-							<a class="nav-link dropdown-toggle" href="{{route('home')}}">Home</a>
+							<a class="nav-link dropdown-toggle" href="{{ route('home') }}">Home</a>
 
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ route('categories') }}">Category</a>
-						</li>
-						<li class="nav-item">
 
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#">Pages</a>
+                        <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#">Categories</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="{{ route('blog-single') }}">Blog Single</a></li>
-								<li><a class="dropdown-item" href="{{ route('about') }}">About</a></li>
+
+                                @foreach ($category as $cat)
+                                    <li><a class="dropdown-item" href="{{ route('categories', $cat->slug) }}">{{ $cat->name }}</a></li>
+
+                                @endforeach
 							</ul>
 						</li>
+
+
+						
 						<li class="nav-item">
 							<a class="nav-link" href="{{ route('contact') }}">Contact</a>
 						</li>
@@ -39,7 +40,6 @@
 						<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
 						<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
 						<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
 						<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
 					</ul>
 					<!-- header buttons -->
