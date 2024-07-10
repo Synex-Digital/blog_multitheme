@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <img src="{{ url('/'. $blog->image)}}" class="mb-3" style="padding-top: 40px; width: 100%">
                         <h2>{{ $blog->title }}</h2>
-                        <h4>{{ $blog->category->name }}</h4>
+                        <h4>{{ $blog->category->name ?? Unknown }}</h4>
 
                         <b>Published in</b> {{ \Carbon\Carbon::parse($blog->updated_at)->format('d/m/Y') }} — by <b>{{ $blog->author }}</b>
                         <p>{!! $blog->content !!}</p>

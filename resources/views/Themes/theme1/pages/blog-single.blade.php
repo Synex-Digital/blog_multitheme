@@ -1,10 +1,10 @@
-@extends('Themes.theme1.layout.app')
+@extends('themes.theme1.layout.app')
 @section('content')
 
     <section class="page-header">
         <div class="container-xl">
             <div class="text-center">
-                <h1 class="mt-0 mb-2">Blog-Single Page</h1>
+                <h1 class="mt-0 mb-2">Blog Single Page</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center mb-0">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>

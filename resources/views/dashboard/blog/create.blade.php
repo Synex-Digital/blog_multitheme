@@ -53,7 +53,7 @@
 
                                                 <td><span class="w-space-no">{{ $blogs->title }}</span></div></td>
 
-                                                <td><span class="w-space-no">{{ $blogs->category->name }}</span></td>
+                                                <td><span class="w-space-no">{{ $blogs->category->name ?? Unknown }}</span></td>
 
                                                 <td><span class="w-space-no">{{ $blogs->author }}</span></td>
 

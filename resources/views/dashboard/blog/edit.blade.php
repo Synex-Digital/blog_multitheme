@@ -35,7 +35,7 @@
                                     <label class="col-sm-3 col-form-label">Category Name</label>
                                     <select name="category_id" class="form-control">
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option value="{{ $category->id }}">{{ $category->name ?? Unknown }}</option>
                                             @endforeach
                                             <option value="" disabled>If category is not in the list, than firstly add the category's information</option>
                                     </select>

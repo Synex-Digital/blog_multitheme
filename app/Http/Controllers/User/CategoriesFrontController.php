@@ -4,6 +4,9 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Blog;
+use App\Models\Social;
+use App\Models\Config;
+
 use Illuminate\Http\Request;
 
 class CategoriesFrontController extends Controller
@@ -21,12 +24,20 @@ class CategoriesFrontController extends Controller
         //category product
         $categoryBlog = Blog::where('category_id', $categoryView->id)->paginate(12);
 
-        return view('Themes.theme1.pages.category', [
+        //social icons for footer
+        $icon = Social::get();
+
+        //for logo and favicon
+        $configs = Config::first();
+
+        return view('themes.theme1.pages.category', [
             'categoryBlog' => $categoryBlog,
             'categoryView' => $categoryView,
             'recent' => $recent,
             'best' => $best,
             'category' => $category,
+            'icon' => $icon,
+            'configs' => $configs,
         ]);
     }
 

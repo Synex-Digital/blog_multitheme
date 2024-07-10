@@ -22,19 +22,41 @@
                                 <div class="form-group row">
                                     <label for="formFile" class="form-label">Logo</label>
                                     <div class="col-sm-12">
-                                        <input type="file" class="form-control" @error('logo') is-invalid @enderror" type="file" id="formFile" name="logo">
+                                        <input type="text" class="form-control" @error('logo') is-invalid @enderror type="text" id="formFile" name="logo">
                                         @error('logo')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
+                                            <br>
+                                            <p class="text-danger">*Click icon to select logo</p>
+                            <li class="list-inline-item"><a href="#"><i id="fab" class="fab fa-facebook-f"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-telegram"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-blogger"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-behance"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-github"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-dribbble-square"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-soundcloud"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-skype"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-spotify"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-twitch"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-viber"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-snapchat"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-tiktok"></i></a></li>
+
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Link</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" @error('link') is-invalid @enderror" placeholder="Enter Link Address" name="link">
+                                        <input type="text" class="form-control" @error('link') is-invalid @enderror placeholder="Enter Link Address" name="link">
                                         @error('link')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -91,7 +113,7 @@
                                             <tr>
                                                 <td width="5%"><strong>{{ $sl+1 }}</strong></td>
 
-                                                <td width="10%"><div class="d-flex align-items-center"><img src="{{ url('/'.$social_links->logo)}}" class="rounded-lg me-2" width="20" alt=""> </div></td>
+                                                <td width="10%"><li class="list-inline-item"><i class="{{ $social_links->logo }}"></i></a></li></td>
 
                                                 <td width="20%"><span class="w-space-no">{{ $social_links->link }}</span></td>
 
@@ -119,4 +141,18 @@
 
         </div>
     {{-- </div> --}}
+@endsection
+
+@section('script')
+    <script>
+        var listItems = document.querySelectorAll('.list-inline-item');
+        let inputs = document.getElementById('formFile');
+        // Add click event listener to each list item
+        listItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var iconName = item.querySelector('i').className; // Get class name of the <i> tag
+            inputs.value = iconName;
+        });
+        });
+    </script>
 @endsection

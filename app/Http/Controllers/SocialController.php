@@ -35,11 +35,10 @@ class SocialController extends Controller
 
         $request->validate([
             'link' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
         ]);
 
         $social = new Social();
-        $social->logo          = Self::upload($request);
+        $social->logo          = $request->logo;
         $social->link          = $request->link;
         $social->status        = $request->status;
         $social->save();
@@ -74,18 +73,10 @@ class SocialController extends Controller
             'link'          => 'required',
         ]);
 
+        $social->logo         = $request->logo;
         $social->link         = $request->link;
         $social->status       = $request->status;
 
-        $oldImage = $social->logo;
-        if (file_exists($oldImage)) {
-            unlink($oldImage);
-            File::delete($oldImage);
-        }
-
-        if ($request->has('logo')) {
-            $social->logo = Self::upload($request);
-        }
         $social->save();
         return back()->with('success', 'Social Link updated successfully');
     }
@@ -100,9 +91,5 @@ class SocialController extends Controller
         return back()->with('danger', 'Link deleted successfully!!');
     }
 
-    static function upload($request){
-        $imageName ='dashboards/Theme1/images/social/'. time() . '.' . $request->logo->extension();
-        $request->logo->move(public_path('dashboards/Theme1/images/social'), $imageName);
-        return $imageName;
-    }
+
 }

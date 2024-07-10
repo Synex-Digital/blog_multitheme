@@ -1,4 +1,4 @@
-@extends('Themes.theme1.layout.app')
+@extends('themes.theme1.layout.app')
 
 @section('content')
 
@@ -23,7 +23,7 @@
 						</div>
 						<a href="blog-single.html">
 							<div class="thumb rounded">
-								<div class="inner data-bg-image" data-bg-image="{{ asset('Themes/theme1/images/posts/potato.jpg') }}"></div>
+								<div class="inner data-bg-image" data-bg-image="{{ asset('themes/theme1/images/posts/potato.jpg') }}"></div>
 							</div>
 						</a>
 					</div>
@@ -40,14 +40,13 @@
 							<li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recent</button></li>
 						</ul>
 						<!-- tab contents -->
-                        @foreach ($blog_items as $blog)
 						<div class="tab-content" id="postsTabContent">
-							<!-- loader -->
+                            <!-- loader -->
 							<div class="lds-dual-ring"></div>
 							<!-- popular posts -->
-							<div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
+                            <div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
+                                    @foreach ($blog_items as $blog)
 								<!-- post -->
-
                                     <div class="post post-list-sm circle">
                                         <div class="thumb circle">
                                             <a href="{{ route('blog_slug', $blog->slug) }}">
@@ -63,29 +62,30 @@
                                             </ul>
                                         </div>
                                     </div>
-
-							</div>
+                                    @endforeach
+							    </div>
 							<!-- recent posts -->
 							<div aria-labelledby="recent-tab" class="tab-pane fade" id="recent" role="tabpanel">
 								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="{{ route('blog_slug', $blog->slug) }}">
-											<div class="inner">
-												<img src="{{ url('/') }}/{{ $blog->image }}" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="{{ route('blog_slug', $blog->slug) }}">{{$blog->title}}</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">{{ $blog->updated_at->format('d/m/Y') }}</li>
-										</ul>
-									</div>
-								</div>
+                                @foreach ($recent as $blog_recent)
+                                    <div class="post post-list-sm circle">
+                                        <div class="thumb circle">
+                                            <a href="{{ route('blog_slug', $blog_recent->slug) }}">
+                                                <div class="inner">
+                                                    <img src="{{ url('/') }}/{{ $blog_recent->image }}" alt="post-title" />
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details clearfix">
+                                            <h6 class="post-title my-0"><a href="{{ route('blog_slug', $blog_recent->slug) }}">{{$blog_recent->title}}</a></h6>
+                                            <ul class="meta list-inline mt-1 mb-0">
+                                                <li class="list-inline-item">{{ $blog_recent->updated_at->format('d/m/Y') }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endforeach
 							</div>
 						</div>
-                        @endforeach
 					</div>
 				</div>
 
@@ -106,7 +106,7 @@
 					<!-- section header -->
 					<div class="section-header">
 						<h3 class="section-title">Editor’s Pick</h3>
-						<img src="{{ asset('Themes/theme1/images/wave.svg')}}" class="wave" alt="wave" />
+						<img src="{{ asset('themes/theme1/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 
 					<div class="padding-30 rounded bordered">
@@ -116,7 +116,7 @@
                                     <!-- post -->
                                     <div class="post">
                                         <div class="thumb rounded">
-                                            <a href="{{ route('categories', $categoryBlog->first()->slug) }}" class="category-badge position-absolute">{{ $blog->category->name }}</a>
+                                            <a href="{{ route('categories', $categoryBlog->first()->slug) }}" class="category-badge position-absolute">{{ $blog->category->name ?? Unknown }}</a>
                                             <span class="post-format">
                                                 <i class="icon-picture"></i>
                                             </span>
@@ -145,7 +145,7 @@
 					<div class="ads-horizontal text-md-center">
 						<span class="ads-title">- Sponsored Ad -</span>
 						<a href="#">
-							<img src="{{ asset('Themes/theme1/images/ads/ad-750.png')}}" alt="Advertisement" />
+							<img src="{{ asset('themes/theme1/images/ads/ad-750.png')}}" alt="Advertisement" />
 						</a>
 					</div>
 
@@ -525,8 +525,8 @@
 					<div class="sidebar">
 						<!-- widget about -->
 						<div class="widget rounded">
-							<div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
-								<img src="{{ asset('Themes/theme1/images/logo.svg')}}" alt="logo" class="mb-4" />
+							<div class="widget-about data-bg-image text-center">
+								<img src="{{ $configs->logo }}" alt="logo" class="mb-4" />
 								<p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
 								<ul class="social-icons list-unstyled list-inline mb-0">
 									<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -543,7 +543,7 @@
 						<div class="widget rounded">
 							<div class="widget-header text-center">
 								<h3 class="widget-title">Popular Posts</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
+								<img src="{{ asset('themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
 							</div>
 							<div class="widget-content">
 								<!-- post -->
@@ -573,7 +573,7 @@
 						<div class="widget rounded">
                             <div class="widget-header text-center">
                                 <h3 class="widget-title">Explore Topics</h3>
-                                <img src="{{ asset('Themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
+                                <img src="{{ asset('themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
                             </div>
                             <div class="widget-content">
                                 <ul class="list">
@@ -589,7 +589,7 @@
 						{{-- <div class="widget no-container rounded text-md-center">
                             <span class="ads-title">- Sponsored Ad -</span>
                             <a href="#" class="widget-ads">
-                                <img src="{{ asset('Themes/theme1/images/ads/ad-360.png') }}" alt="Advertisement" />
+                                <img src="{{ asset('themes/theme1/images/ads/ad-360.png') }}" alt="Advertisement" />
                             </a>
                         </div> --}}
 
@@ -603,46 +603,5 @@
 
 		</div>
 	</section>
-
-	<!-- instagram feed -->
-	{{-- <div class="instagram">
-		<div class="container-xl">
-			<!-- button -->
-			<a href="#" class="btn btn-default btn-instagram">@Katen on Instagram</a>
-			<!-- images -->
-			<div class="instagram-feed d-flex flex-wrap">
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-1.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-2.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-3.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-4.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-5.jpg" alt="insta-title" />
-					</a>
-				</div>
-				<div class="insta-item col-sm-2 col-6 col-md-2">
-					<a href="#">
-						<img src="images/insta/insta-6.jpg" alt="insta-title" />
-					</a>
-				</div>
-			</div>
-		</div>
-	</div> --}}
 
 @endsection

@@ -1,4 +1,4 @@
-@extends('Themes.theme1.layout.app')
+@extends('themes.theme1.layout.app')
 @section('content')
     <section class="main-content">
         <div class="container-xl">
@@ -11,7 +11,7 @@
                         <span class="icon icon-phone"></span>
                         <div class="details">
                             <h3 class="mb-0 mt-0">Phone</h3>
-                            <p class="mb-0">+1-202-555-0135</p>
+                            <p class="mb-0">{{ $configs->phone }}</p>
                         </div>
                     </div>
                     <div class="spacer d-md-none d-lg-none" data-height="30"></div>
@@ -23,7 +23,7 @@
                         <span class="icon icon-envelope-open"></span>
                         <div class="details">
                             <h3 class="mb-0 mt-0">E-Mail</h3>
-                            <p class="mb-0">hello@example.com</p>
+                            <p class="mb-0">{{ $configs->email }}</p>
                         </div>
                     </div>
                     <div class="spacer d-md-none d-lg-none" data-height="30"></div>
@@ -35,7 +35,7 @@
                         <span class="icon icon-map"></span>
                         <div class="details">
                             <h3 class="mb-0 mt-0">Location</h3>
-                            <p class="mb-0">Dhaka, Bangladesh</p>
+                            <p class="mb-0">{{ $configs->address }}</p>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
             <!-- section header -->
             <div class="section-header">
                 <h3 class="section-title">Send Message</h3>
-                <img src="{{ asset('Themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
+                <img src="{{ asset('themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
             </div>
 
             <!-- Contact Form -->
