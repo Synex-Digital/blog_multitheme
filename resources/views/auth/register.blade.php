@@ -117,10 +117,11 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
 									<div class="text-center mb-3">
-										<a href="index.html"><img src="{{ asset('dashboards/Theme1/images/logo-full.png') }}" alt=""></a>
+										<a href=""><img src="{{ asset('dashboards/theme1/images/logo-full.png') }}" alt=""></a>
 									</div>
                                     <h4 class="text-center mb-4 text-white">Sign up your account</h4>
                                     <form action="{{ route('register') }}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Name</strong></label>
                                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>

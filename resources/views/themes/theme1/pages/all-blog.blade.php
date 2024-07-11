@@ -4,12 +4,11 @@
     <section class="page-header">
         <div class="container-xl">
             <div class="text-center">
-                <h1 class="mt-0 mb-2">Category</h1>
+                <h1 class="mt-0 mb-2">Blogs</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center mb-0">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Category</li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $categoryView->name }}</li>
+                        <li class="breadcrumb-item" aria-current="page">Blogs</li>
                     </ol>
                 </nav>
             </div>
@@ -24,8 +23,7 @@
                 <div class="col-lg-8">
 
                     <div class="row gy-4">
-                        @if($categoryView->blogs)
-                        @foreach ($categoryBlog as $blog)
+                        @foreach ($blog_items as $blog)
                             <div class="col-sm-6">
                                 <!-- post -->
                                 <div class="post post-grid rounded bordered">
@@ -67,7 +65,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        @endif
                     </div>
 
                     {{-- <nav>
@@ -80,11 +77,7 @@
                         </ul>
                     </nav> --}}
 
-                    <div class="spacer" data-height="50" style="height: 30px;"></div>
 
-                    <div class="row">
-                        {{ $categoryBlog->links('pagination::bootstrap-4') }}
-                    </div>
 
                 </div>
 

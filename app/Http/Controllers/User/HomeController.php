@@ -31,6 +31,9 @@ class HomeController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
+        //Banner post
+        $banner = Blog::orderBy('id', 'desc')->first();
+
         if ($themes) {
             return view("themes.$themes->name.index",[
                 'blog_items' => $blog_items,
@@ -39,6 +42,7 @@ class HomeController extends Controller
                 'recent' => $recent,
                 'icon' => $icon,
                 'configs' => $configs,
+                'banner' => $banner,
 
             ]);
         }
@@ -50,8 +54,35 @@ class HomeController extends Controller
                 'recent' => $recent,
                 'icon' => $icon,
                 'configs' => $configs,
+                'banner' => $banner,
             ]);
         }
+    }
+
+    public function all_blogs(){
+
+        //all blogs
+        $blog_items = Blog::get();
+
+        $category = Category::where('status','active')->get();
+
+        //for recent blog
+        $recent = Blog::orderBy('id', 'desc')->take(4)->get();
+
+        //for social icons
+        $icon = Social::get();
+
+        //for logo and favicon
+        $configs = Config::first();
+
+        return view('themes.theme1.pages.all-blog', [
+            'blog_items' => $blog_items,
+            'recent' => $recent,
+            'icon' => $icon,
+            'configs' => $configs,
+            'category' => $category,
+
+        ]);
     }
 
 

@@ -44,25 +44,41 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Author's Name</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" value="{{ $blog->author }}" name="author">
+                                        <input type="text" class="form-control @error('author') is-invalid @enderror" value="{{ $blog->author }}" name="author">
+                                        @error('author')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Blog Title</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" value="{{ $blog->title }}" name="title">
+                                        <input type="text" class="form-control @error('title') is-invalid @enderror" value="{{ $blog->title }}" name="title">
+                                        @error('title')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Image</label>
                                     <input class="form-control" type="file" id="formFile" name="image">
+
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Content</label>
-                                    <textarea id="summernote" name="content"></textarea>
+                                    <textarea id="summernote" name="content">{{ $blog->content }}</textarea>
+                                    @error('content')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
 
                                 <div class="form-group row">
@@ -93,29 +109,54 @@
                         <div class="card-body">
 
                             <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Slug<span class="required-tag">*</span></label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" @error('slug') is-invalid @enderror placeholder="blog slug" name="slug" value="{{ $blog->slug }}">
+                                    @error('slug')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">SEO Title</label>
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" value="{{ $blog->seo_title }}" name="seo_title">
+                                    @error('seo_title')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">SEO Description</label>
                                 <textarea class="from-control" rows="5" name="seo_description"></textarea>
+                                @error('seo_description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">SEO Tags</label>
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" value="{{ $blog->seo_tags }}" name="seo_tags">
+                                    @error('seo_tags')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
                             </div>
 
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
                 </form>
             </div>
         </div>

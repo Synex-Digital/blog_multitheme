@@ -14,16 +14,16 @@
 					<!-- featured post large -->
 					<div class="post featured-post-lg">
 						<div class="details clearfix">
-							<a href="{{ route('categories', $categoryBlog->first()->slug) }}" class="category-badge">Food</a>
-							<h2 class="post-title"><a href="#">Roasted Yukon Gold Potatoes</a></h2>
+							<a href="{{ route('categories', $categoryBlog->first()->slug) }}" class="category-badge">{{ $banner->category->name ?? Unknown}}</a>
+							<h2 class="post-title"><a href="#">{{ $banner->title }}</a></h2>
 							<ul class="meta list-inline mb-0">
-								<li class="list-inline-item"><a href="#">Karen</a></li>
-								<li class="list-inline-item">10 June 2024</li>
+								<li class="list-inline-item"><a href="#">{{ $banner->author }}</a></li>
+								<li class="list-inline-item">{{ $banner->updated_at->format('d/m/Y') }}</li>
 							</ul>
 						</div>
 						<a href="blog-single.html">
 							<div class="thumb rounded">
-								<div class="inner data-bg-image" data-bg-image="{{ asset('themes/theme1/images/posts/potato.jpg') }}"></div>
+								<div class="inner data-bg-image" data-bg-image="{{ url('/') }}/{{ $banner->image }}"></div>
 							</div>
 						</a>
 					</div>
@@ -519,34 +519,31 @@
 					</div> --}}
 
 				</div>
-				<div class="col-lg-4">
 
-					<!-- sidebar -->
-					<div class="sidebar">
-						<!-- widget about -->
-						<div class="widget rounded">
-							<div class="widget-about data-bg-image text-center">
-								<img src="{{ $configs->logo }}" alt="logo" class="mb-4" />
-								<p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
-								<ul class="social-icons list-unstyled list-inline mb-0">
-									<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-								</ul>
-							</div>
-						</div>
+                <div class="col-lg-4">
 
-						<!-- widget popular posts -->
-						<div class="widget rounded">
-							<div class="widget-header text-center">
-								<h3 class="widget-title">Popular Posts</h3>
-								<img src="{{ asset('themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								<!-- post -->
+                    <!-- sidebar -->
+                    <div class="sidebar">
+                        <div class="widget rounded">
+                            <div class="widget-about data-bg-image text-center">
+                                <img src="{{ $configs->logo }}" alt="logo" class="mb-4" />
+                                <p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
+                                <ul class="social-icons list-unstyled list-inline mb-0">
+                                    @foreach ($icon as $favicon)
+                                        <li class="list-inline-item"><a href="{{ $favicon->link }}"><i class="{{ $favicon->logo }}"></i></a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- widget popular posts -->
+                        <div class="widget rounded">
+                            <div class="widget-header text-center">
+                                <h3 class="widget-title">Popular Posts</h3>
+                                <img src="{{ asset('themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
+                            </div>
+                            <div class="widget-content">
+                                <!-- post -->
                                 @foreach ($blog_items as $sl => $blog)
                                     <div class="post post-list-sm circle">
                                         <div class="thumb circle">
@@ -566,11 +563,11 @@
                                     </div>
                                 @endforeach
 
-							</div>
-						</div>
+                            </div>
+                        </div>
 
-						<!-- widget categories -->
-						<div class="widget rounded">
+                        <!-- widget categories -->
+                        <div class="widget rounded">
                             <div class="widget-header text-center">
                                 <h3 class="widget-title">Explore Topics</h3>
                                 <img src="{{ asset('themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
@@ -584,20 +581,35 @@
                             </div>
                         </div>
 
+                        <!-- widget newsletter -->
+						<div class="widget rounded">
+							<div class="widget-header text-center">
+								<h3 class="widget-title">Newsletter</h3>
+								<img src="{{ asset('themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
+							</div>
+							<div class="widget-content">
+								<span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
+								<form>
+									<div class="mb-2">
+										<input class="form-control w-100 text-center" placeholder="Email address…" type="email">
+									</div>
+									<button class="btn btn-default btn-full" type="submit">Sign Up</button>
+								</form>
+								<span class="newsletter-privacy text-center mt-3">By signing up, you agree to our <a href="{{ route('policy') }}">Privacy Policy</a></span>
+							</div>
+						</div>
 
-						<!-- widget advertisement -->
-						{{-- <div class="widget no-container rounded text-md-center">
+
+                        <!-- widget advertisement -->
+                        <div class="widget no-container rounded text-md-center">
                             <span class="ads-title">- Sponsored Ad -</span>
                             <a href="#" class="widget-ads">
                                 <img src="{{ asset('themes/theme1/images/ads/ad-360.png') }}" alt="Advertisement" />
                             </a>
-                        </div> --}}
+                        </div>
+                    </div>
 
-
-
-					</div>
-
-				</div>
+                </div>
 
 			</div>
 
@@ -605,3 +617,4 @@
 	</section>
 
 @endsection
+

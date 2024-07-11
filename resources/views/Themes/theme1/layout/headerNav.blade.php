@@ -3,7 +3,7 @@
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-xl">
 				<!-- site logo -->
-				<a class="site-logo navbar-brand" href="{{ route('home') }}"><img src="{{ $configs->logo }}" alt="logo" /></a>
+				<a class="site-logo navbar-brand" href="{{ route('home') }}"><img src="{{asset($configs->logo) }}" alt="logo" /></a>
 
 				<div class="collapse navbar-collapse">
 					<!-- menus -->
@@ -25,6 +25,9 @@
 
 
 
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('all_blogs') }}">Blogs</a>
+						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{{ route('contact') }}">Contact</a>
 						</li>

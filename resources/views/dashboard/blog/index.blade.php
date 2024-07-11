@@ -67,7 +67,7 @@
 
                                     <div class="mb-3 col-md-6">
                                         <label for="formFile" class="form-label">Image</label>
-                                        <input class="form-control" type="file" id="formFile" @error('image') is-invalid @enderror" name="image">
+                                        <input class="form-control" type="file" id="formFile" @error('image') is-invalid @enderror name="image">
                                         @error('image')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -116,7 +116,7 @@
                                     <div class="form-group col-md-6">
                                         <label class="col-sm-3 col-form-label">SEO Title</label>
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" @error('seo_title') is-invalid @enderror" placeholder="Enter SEO title" name="seo_title">
+                                            <input type="text" class="form-control" @error('seo_title') is-invalid @enderror placeholder="Enter SEO title" name="seo_title">
                                             @error('seo_title')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -127,7 +127,7 @@
                                     <div class="form-group col-md-6">
                                         <label class="col-sm-3 col-form-label">SEO Tags</label>
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" @error('seo_tags') is-invalid @enderror" placeholder="Enter SEO tags" name="seo_tags">
+                                            <input type="text" class="form-control" @error('seo_tags') is-invalid @enderror placeholder="Enter SEO tags" name="seo_tags">
                                             @error('seo_tags')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -139,7 +139,7 @@
 
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">SEO Description</label>
-                                    <textarea class="from-control" rows="5" @error('seo_description') is-invalid @enderror" name="seo_description"></textarea>
+                                    <textarea class="from-control" rows="5" @error('seo_description') is-invalid @enderror name="seo_description"></textarea>
                                     @error('seo_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

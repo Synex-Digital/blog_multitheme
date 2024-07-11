@@ -24,9 +24,10 @@
         ***********************************-->
         <div class="nav-header">
             <a href="{{ route('dashboard')}}" class="brand-logo">
-                <img class="logo-abbr" src="{{ url('/'.$config->logo) }}" alt="">
-                <img class="logo-compact" src="{{ asset('dashboards/theme1/images/logo-text.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('dashboards/theme1/images/logo-text.png') }}" alt="">
+                @if ($config)
+                    <img class="logo-abbr" src="{{ url('/'.$config->logo) }}" alt="">
+                @endif
+
             </a>
 
             <div class="nav-control">
@@ -147,7 +148,7 @@
                 </ul>
 
 				<div class="copyright">
-					<p><strong>EcoBlogs Dashboard</strong> © 2024 All Rights Reserved</p>
+					<p><strong>Blogs Dashboard</strong> © 2024 All Rights Reserved</p>
 					<p>Made with <span class="heart"></span> by Synex Digital</p>
 				</div>
 			</div>

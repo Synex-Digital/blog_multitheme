@@ -29,7 +29,7 @@
                                     <div class="form-group col-md-6">
                                         <label class="col-sm-3 col-form-label">Name</label>
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" @error('name') is-invalid @enderror" placeholder="Enter Category Name" name="name">
+                                            <input type="text" class="form-control" @error('name') is-invalid @enderror placeholder="Enter Category Name" name="name">
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
 
                                     <div class="mb-3 col-md-6">
                                         <label for="formFile" class="form-label">Add Category Image</label>
-                                        <input class="form-control" @error('image') is-invalid @enderror" type="file" id="formFile" name="image">
+                                        <input class="form-control" @error('image') is-invalid @enderror type="file" id="formFile" name="image">
                                         @error('image')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

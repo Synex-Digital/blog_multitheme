@@ -1,7 +1,10 @@
 @php
 
 use App\Models\Category;
+use App\Models\Config;
 $category = Category::where('status','active')->get();
+$configs = Config::first();
+
 @endphp
 
 <!DOCTYPE html>
@@ -11,7 +14,7 @@ $category = Category::where('status','active')->get();
 	<title>Katen - Minimal Blog & Magazine HTML Theme</title>
 	<meta name="description" content="Katen - Minimal Blog & Magazine HTML Theme">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="{{ $configs->favicon }}">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset($configs->favicon) }}">
     @include('themes.theme1.layout.headerlink')
     @yield('style')
     {{-- this is for custom codes --}}
@@ -70,6 +73,8 @@ $category = Category::where('status','active')->get();
         </div>
     </div>
 </div>
+
+
 <!-- site wrapper -->
 <div class="site-wrapper">
 
@@ -96,7 +101,7 @@ $category = Category::where('status','active')->get();
 
 	<!-- logo -->
 	<div class="logo">
-		<img src="{{ asset('themes/theme1/images/logo.svg') }}" alt="Katen" />
+		<img src="{{ asset($configs->logo) }}" alt="logo" />
 	</div>
 
 	<!-- menu -->
@@ -116,6 +121,8 @@ $category = Category::where('status','active')->get();
 			<li><a href="{{ route('contact') }}">Contact</a></li>
 		</ul>
 	</nav>
+
+
 
 	<!-- social icons -->
 	<ul class="social-icons list-unstyled list-inline mb-0 mt-auto w-100">

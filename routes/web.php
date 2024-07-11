@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Auth;
 
 //Frontend Routes
 Route::get('/',[UserHomeController::class, 'index'])->name('home');
+Route::get('/all-blogs',[UserHomeController::class, 'all_blogs'])->name('all_blogs');
 Route::get('/blog-single', [BlogSingleController::class, 'blog_single'])->name('blog_single');
 Route::get('/blog/single/{slug}', [BlogSingleController::class, 'blog_slug'])->name('blog_slug');
 Route::get('/categories/{slug}', [CategoriesFrontController::class, 'cat'])->name('categories');
