@@ -50,7 +50,7 @@
                                     <div class="post post-list-sm circle">
                                         <div class="thumb circle">
                                             <a href="{{ route('blog_slug', $blog->slug) }}">
-                                                <div class="inner">
+                                                <div class="inner list-inner-circle">
                                                     <img src="{{ url('/') }}/{{ $blog->image }}" alt="post-title" />
                                                 </div>
                                             </a>
@@ -71,7 +71,7 @@
                                     <div class="post post-list-sm circle">
                                         <div class="thumb circle">
                                             <a href="{{ route('blog_slug', $blog_recent->slug) }}">
-                                                <div class="inner">
+                                                <div class="inner list-inner-circle">
                                                     <img src="{{ url('/') }}/{{ $blog_recent->image }}" alt="post-title" />
                                                 </div>
                                             </a>

@@ -41,7 +41,12 @@
 
                                     <div class="mb-3 col-md-6">
                                         <label for="formFile" class="form-label">Add Category Image</label>
-                                        <input class="form-control" type="file" id="formFile" name="image">
+                                        <input class="form-control @error('image') is-invalid @enderror" type="file" id="formFile" name="image">
+                                        @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     </div>
                                 </div>
 

@@ -83,9 +83,10 @@ class CategoryController extends Controller
     {
 
         $request->validate([
-            'name' => 'required',
+            'name'  => 'required',
+            'image' => 'required|mimes:png,jpg,webp,jpeg,svg|max:2048',
         ]);
-        
+
         $category->name             = $request->name;
         $category->seo_title        = $request->seo_title;
         $category->seo_description  = $request->seo_description;
