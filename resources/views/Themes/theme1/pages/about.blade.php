@@ -280,7 +280,7 @@
                             <div class="widget-content">
                                 <ul class="list">
                                     @foreach ($categories as $category)
-                                        <li><a href="#">{{ $category->name }}</a><span>{{ $category->blogs ? $category->blogs->count(): '0' }}</span></li>
+                                        <li><a href="{{ route('categories', $category->slug) }}">{{ $category->name }}</a><span>{{ $category->blogs ? $category->blogs->count(): '0' }}</span></li>
                                     @endforeach
                                 </ul>
                             </div>

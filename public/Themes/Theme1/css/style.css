@@ -153,6 +153,12 @@ img {
   left: 50%;
   top: 0;
 }
+
+.inner.list-inner-circle {
+    width: 65px;
+    height: 65px;
+}
+
 .book ul li {
   height: 4px;
   border-radius: 2px;

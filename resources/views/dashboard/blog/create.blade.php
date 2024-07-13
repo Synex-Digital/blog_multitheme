@@ -8,6 +8,7 @@
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
                     <li class="breadcrumb-item"><a href="" class="disabled">Blogs</a></li>
                     <li class="breadcrumb-item active"><a href="javascript:void(0)">View</a></li>
+                    <a href="{{ route('blog.index') }}" class="btn-left btn btn-primary" style="justify-content: right;">Create Blog</a>
                 </ol>
                 <div class="col-lg-12">
                     <div class="card">
@@ -73,10 +74,10 @@
 
                                                         <a href="{{ route('blog.show', $blogs->id) }}" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>
 
-                                                        <form action="{{ route('blog.destroy', $blogs->id) }}" method="POST">
+                                                        <form class="delete-form" action="{{ route('blog.destroy', $blogs->id) }}" method="POST">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                                                            <button type="submit" class="btn btn-delete btn-danger shadow btn-xs sharp" data-id="{{ $blogs->id }}"><i class="fa fa-trash"></i></button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -94,4 +95,27 @@
 
 
 
+@endsection
+
+@section('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var forms = document.querySelectorAll('.delete-form');
+
+            forms.forEach(function(form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Prevent form submission
+
+                    var id = this.querySelector('button[type="submit"]').getAttribute('data-id'); // Get the blog post ID
+
+                    // Show confirmation dialog
+                    if (confirm('Are you sure you want to delete this blog post?')) {
+                        // If user confirms, submit the form
+                        this.removeEventListener('submit', arguments.callee); // Remove the event listener to prevent multiple submissions
+                        this.submit();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

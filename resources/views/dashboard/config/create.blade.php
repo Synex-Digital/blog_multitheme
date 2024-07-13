@@ -57,10 +57,10 @@
                                             <div class="d-flex">
                                                 <a href="{{ route('config.edit', $configs->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
 
-                                                <form action="{{ route('config.destroy', $configs->id) }}" method="POST">
+                                                <form class="delete-form" action="{{ route('config.destroy', $configs->id) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-danger shadow btn-xs sharp" data-id="{{ $configs->id }}"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
                                         </td>
@@ -75,3 +75,27 @@
     </div>
 {{-- </div> --}}
 @endsection
+
+@section('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var forms = document.querySelectorAll('.delete-form');
+
+            forms.forEach(function(form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Prevent form submission
+
+                    var id = this.querySelector('button[type="submit"]').getAttribute('data-id'); // Get the blog post ID
+
+                    // Show confirmation dialog
+                    if (confirm('Are you sure you want to delete this blog post?')) {
+                        // If user confirms, submit the form
+                        this.removeEventListener('submit', arguments.callee); // Remove the event listener to prevent multiple submissions
+                        this.submit();
+                    }
+                });
+            });
+        });
+    </script>
+@endsection
+

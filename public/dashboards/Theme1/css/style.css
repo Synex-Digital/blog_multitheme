@@ -687,6 +687,10 @@ progress {
   max-width: 100%;
   height: auto; }
 
+.btn-left{
+    margin-left: auto;
+}
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #F9F9F9;

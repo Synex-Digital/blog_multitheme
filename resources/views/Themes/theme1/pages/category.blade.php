@@ -117,7 +117,7 @@
                                         <div class="thumb circle">
                                             <span class="number">{{ $sl+1 }}</span>
                                             <a href="{{ route('blog_slug', $blog->slug) }}">
-                                                <div class="inner">
+                                                <div class="inner list-inner-circle">
                                                     <img src="{{ url('/') }}/{{ $blog->image }}" alt="post-title" />
                                                 </div>
                                             </a>

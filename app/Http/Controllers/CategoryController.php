@@ -36,11 +36,7 @@ class CategoryController extends Controller
     {
 
         $request->validate([
-            'name'              => 'required',
-            'seo_title'         => 'required',
-            'seo_description'   => 'required',
-            'seo_tags'          => 'required',
-            'image'             => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
+            'name' => 'required',
         ]);
 
         $category = new Category();
@@ -51,7 +47,12 @@ class CategoryController extends Controller
         $category->seo_tags         = $request->seo_tags;
         $category->image            = Self::upload($request);
         $category->status           = $request->status;
-        $category->slug             = Str::slug($request->name, '-');
+        if($request->slug != null){
+            $category->slug         = $request->slug;
+        }
+        else{
+            $category->slug         = Str::slug($request->name, '-');
+        }
         $category->save();
         return back()->with('success', 'Category created successfully');
     }
@@ -84,6 +85,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
+        
         $category->name             = $request->name;
         $category->seo_title        = $request->seo_title;
         $category->seo_description  = $request->seo_description;

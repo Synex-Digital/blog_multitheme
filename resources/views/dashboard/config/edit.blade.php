@@ -23,7 +23,7 @@
                         <div class="form-group row">
                             <label for="formFile" class="form-label">Favicon</label>
                             <div class="col-sm-12">
-                                <input type="file" class="form-control" @error('favicon') is-invalid @enderror" type="file" id="formFile" name="favicon">
+                                <input type="file" class="form-control @error('favicon') is-invalid @enderror" type="file" id="formFile" name="favicon">
                                 @error('favicon')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -35,7 +35,7 @@
                         <div class="form-group row">
                             <label for="formFile" class="form-label">Logo</label>
                             <div class="col-sm-12">
-                                <input type="file" class="form-control" @error('logo') is-invalid @enderror" type="file" id="formFile" name="logo">
+                                <input type="file" class="form-control @error('logo') is-invalid @enderror" type="file" id="formFile" name="logo">
                                 @error('logo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Email</label>
                                 <div class="col-sm-12">
-                                    <input type="email" class="form-control" @error('email') is-invalid @enderror" placeholder="Enter Email Address" name="email" value="{{ $config->email }}">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter Email Address" name="email" value="{{ $config->email }}">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -65,7 +65,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Address</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" @error('address') is-invalid @enderror" placeholder="Enter Address" name="address" value="{{ $config->address }}">
+                                    <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Enter Address" name="address" value="{{ $config->address }}">
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -77,7 +77,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Number</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" @error('phone') is-invalid @enderror" placeholder="Enter Number" name="phone" value="{{ $config->phone }}">
+                                    <input type="text" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter Number" name="phone" value="{{ $config->phone }}">
                                     @error('phone')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

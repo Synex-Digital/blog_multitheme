@@ -36,7 +36,6 @@ class ConfigController extends Controller
         $request->validate([
             'favicon'          => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
             'logo'             => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
-            'name'             => 'required',
             'address'          => 'required',
             'email'            => 'required',
             'phone'            => 'required',

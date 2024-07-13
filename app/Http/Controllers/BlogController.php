@@ -47,7 +47,9 @@ class BlogController extends Controller
             'title'             => 'required',
             'author'            => 'required',
             'content'           => 'required',
-            'image'             => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
+            'seo_title'         => 'required',
+            'seo_tags'          => 'required',
+            'seo_description'   => 'required',
 
         ]);
         $blog = new Blog();
@@ -61,7 +63,12 @@ class BlogController extends Controller
         $blog->seo_description  = $request->seo_description;
         $blog->seo_tags         = $request->seo_tags;
         $blog->status           = $request->status;
-        $blog->slug             = $request->slug != null ? $request->slug : Str::slug($request->title, '-');
+        if($request->slug != null){
+            $blog->slug         = $request->slug;
+        }
+        else{
+            $blog->slug         = Str::slug($request->title, '-');
+        }
         $blog->save();
 
         return back()->with('success', 'Blog created successfully');
@@ -103,9 +110,10 @@ class BlogController extends Controller
             'title'             => 'required',
             'author'            => 'required',
             'content'           => 'required',
+            'slug'              => 'required',
             'seo_title'         => 'required',
-            'seo_description'   => 'required',
             'seo_tags'          => 'required',
+            'seo_description'   => 'required',
         ]);
 
         $blog->category_id      = $request->category_id;
@@ -119,15 +127,15 @@ class BlogController extends Controller
         $blog->slug             = $request->slug;
         $oldImage               = $blog->image;
 
-
+        if ($request->image !== null){
             if (file_exists($oldImage)) {
                 unlink($oldImage);
                 File::delete($oldImage);
             }
-
             if ($request->has('image')) {
-            $blog->image = Self::upload($request);
+                $blog->image = Self::upload($request);
             }
+        }
 
         $blog->save();
         return back()->with('success', 'Blog updated successfully');
