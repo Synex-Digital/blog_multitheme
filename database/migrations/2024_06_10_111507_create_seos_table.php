@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('seos', function (Blueprint $table) {
             $table->id();
             $table->enum('page', ['home', 'about', 'privacy', 'contact']);
-            $table->string('seo_title');
-            $table->string('seo_description');
-            $table->string('seo_tags');
+            $table->string('seo_title', 300);
+            $table->longText('seo_description');
+            $table->string('seo_tags', 400);
             $table->timestamps();
         });
     }

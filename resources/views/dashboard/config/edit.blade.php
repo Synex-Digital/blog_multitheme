@@ -5,7 +5,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="fa-solid fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="" class="disabled">Settings</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('category.create') }}">View Configurations List</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('config.create') }}">View Configurations List</a></li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit Configuration</a></li>
             </ol>
             @if(session('success'))

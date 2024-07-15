@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Photo;
 
 class BlogController extends Controller
 {
@@ -41,7 +42,10 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(Photo::upload($request->image,'/','sf'));
+        // die();
 
+        //old
         $request->validate([
             'category_id'       => 'required',
             'title'             => 'required',

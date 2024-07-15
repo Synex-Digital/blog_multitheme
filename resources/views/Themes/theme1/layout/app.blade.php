@@ -1,17 +1,17 @@
 @php
-
-use App\Models\Category;
-use App\Models\Config;
-$category = Category::where('status','active')->get();
-$configs = Config::first();
-
+    use App\Models\Category;
+    use App\Models\Config;
+    use App\Models\Social;
+    $category = Category::where('status','active')->get();
+    $configs = Config::first();
+    $icon = Social::get();
 @endphp
 
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Katen - Minimal Blog & Magazine HTML Theme</title>
+	<title>The Good Brand - Fashion Blog & Food Magazine</title>
 	<meta name="description" content="Katen - Minimal Blog & Magazine HTML Theme">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset($configs->favicon) }}">
