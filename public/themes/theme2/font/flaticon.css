@@ -1,0 +1,44 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 28/01/2019 10:19
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("Flaticon.html");
+  src: url("Flaticond41d.html?#iefix") format("embedded-opentype"),
+       url("Flaticon-2.html") format("woff2"),
+       url("Flaticon-3.html") format("woff"),
+       url("Flaticon-4.html") format("truetype"),
+       url("Flaticon-5.html#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("Flaticon-5.html#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.flaticon-envelope:before { content: "\f100"; }
+.flaticon-profile:before { content: "\f101"; }
+.flaticon-magnifying-glass:before { content: "\f102"; }
+.flaticon-shopping-bag:before { content: "\f103"; }
+.flaticon-up-arrow-angle:before { content: "\f104"; }
+.flaticon-down-arrow:before { content: "\f105"; }
+.flaticon-back:before { content: "\f106"; }
+.flaticon-left-arrow:before { content: "\f107"; }
+.flaticon-next:before { content: "\f108"; }
+.flaticon-right-arrow:before { content: "\f109"; }
+.flaticon-double-up-arrow-angles:before { content: "\f10a"; }
+.flaticon-play-arrow:before { content: "\f10b"; }

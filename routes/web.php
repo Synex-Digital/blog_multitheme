@@ -33,6 +33,10 @@ Route::get('/about', [ContactController::class, 'abouts'])->name('about');
 Route::get('/policy', [ContactController::class, 'policys'])->name('policy');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
+
+//Frontend Routes Theme 2
+Route::get('/theme2/contact', [UserHomeController::class, 'theme2_contact'])->name('theme2.contact');
+
 // Route::get('/dashboard', function() {
 //     return view('dashboard.index');
 // });

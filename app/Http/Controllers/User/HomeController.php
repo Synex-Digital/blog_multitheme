@@ -8,13 +8,14 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Social;
 use App\Models\Config;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(){
         $themes = Themes::where('status','active')->first();
-
+// dd($themes);
         //for blog list show
         $blog_items = Blog::get();
 
@@ -35,6 +36,11 @@ class HomeController extends Controller
         $banner = Blog::orderBy('id', 'desc')->first();
 
         if ($themes) {
+
+            // $this->optimize();
+
+            // return response()->json(['message' => 'Theme switched successfully!']);
+
             return view("themes.$themes->name.index",[
                 'blog_items' => $blog_items,
                 'categoryBlog' => $categoryBlog,
@@ -45,8 +51,14 @@ class HomeController extends Controller
                 'banner' => $banner,
 
             ]);
+
         }
         else {
+
+            // $this->optimize();
+
+            // return response()->json(['message' => 'Theme switched successfully!']);
+
             return view('themes.theme1.index', [
                 'blog_items' => $blog_items,
                 'categoryBlog' => $categoryBlog,
@@ -58,6 +70,15 @@ class HomeController extends Controller
             ]);
         }
     }
+
+    // private function optimize()
+    // {
+    //     // Execute optimization commands
+    //     Artisan::call('optimize');
+    //     Artisan::call('config:cache');
+    //     Artisan::call('route:cache');
+    //     Artisan::call('view:cache');
+    // }
 
     public function all_blogs(){
 
@@ -83,6 +104,10 @@ class HomeController extends Controller
             'category' => $category,
 
         ]);
+    }
+
+    public function theme2_contact(){
+        return view('themes.theme2.pages.contact');
     }
 
 
