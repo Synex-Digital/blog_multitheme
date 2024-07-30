@@ -37,11 +37,11 @@
                 </div>
                 <div class="contact-list">
                     <h3 class="item-title">Phone</h3>
-                    <p>+123 88 9999 00, +123 88 9999 00, +123 88 9999 00</p>
+                    <p>{{ $configs->phone }}</p>
                 </div>
                 <div class="contact-list">
                     <h3 class="item-title">Mail Us</h3>
-                    <p>info@gmail.com, info@gmail.com, info@gmail.com,</p>
+                    <p>{{ $configs->email }}</p>
                 </div>
             </div>
         </div>
@@ -69,12 +69,9 @@
             </div>
             <div class="widget-follow-us-2">
                 <ul>
-                    <li class="single-item"><a href="#"><i class="fab fa-facebook-f"></i>LIKE ME ON</a></li>
-                    <li class="single-item"><a href="#"><i class="fab fa-twitter"></i>FOLLOWE ME</a></li>
-                    <li class="single-item"><a href="#"><i class="fab fa-instagram"></i>FOLLOW ME</a></li>
-                    <li class="single-item"><a href="#"><i class="fab fa-linkedin-in"></i>FOLLOW ME</a></li>
-                    <li class="single-item"><a href="#"><i class="fab fa-pinterest-p"></i>FOLLOW ME</a></li>
-                    <li class="single-item"><a href="#"><i class="fab fa-youtube"></i>SUBSCRIBE</a></li>
+                    @foreach ($icon as $favicon)
+                        <li class="single-item"><a href="{{ $favicon->link }}"><i class="{{ $favicon->logo }}"></i></a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>

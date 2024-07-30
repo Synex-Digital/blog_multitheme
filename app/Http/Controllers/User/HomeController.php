@@ -49,7 +49,6 @@ class HomeController extends Controller
                 'icon' => $icon,
                 'configs' => $configs,
                 'banner' => $banner,
-
             ]);
 
         }
@@ -106,9 +105,34 @@ class HomeController extends Controller
         ]);
     }
 
-    public function theme2_contact(){
-        return view('themes.theme2.pages.contact');
+
+    public function theme2_all_blogs(){
+
+        //all blogs
+        $blog_items = Blog::get();
+
+        $category = Category::where('status','active')->get();
+
+        //for recent blog
+        $recent = Blog::orderBy('id', 'desc')->take(4)->get();
+
+        //for social icons
+        $icon = Social::get();
+
+        //for logo and favicon
+        $configs = Config::first();
+
+        return view('themes.theme2.pages.all-blog', [
+            'blog_items' => $blog_items,
+            'recent' => $recent,
+            'icon' => $icon,
+            'configs' => $configs,
+            'category' => $category,
+
+        ]);
     }
+
+    
 
 
 }

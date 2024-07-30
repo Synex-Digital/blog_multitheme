@@ -35,7 +35,11 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
 //Frontend Routes Theme 2
-Route::get('/theme2/contact', [UserHomeController::class, 'theme2_contact'])->name('theme2.contact');
+Route::get('/theme2/categories/{slug}', [CategoriesFrontController::class, 'theme2_cat'])->name('theme2.categories');
+Route::get('/theme2/all-blogs',[UserHomeController::class, 'theme2_all_blogs'])->name('theme2.all.blogs');
+Route::get('/theme2/blog-single', [BlogSingleController::class, 'theme2_blog_single'])->name('theme2.blog.single');
+Route::get('/theme2/blog/single/{slug}', [BlogSingleController::class, 'theme2_blog_slug'])->name('theme2.blog.slug');
+Route::get('/theme2/contact', [ContactController::class, 'theme2_contact'])->name('theme2.contact');
 
 // Route::get('/dashboard', function() {
 //     return view('dashboard.index');

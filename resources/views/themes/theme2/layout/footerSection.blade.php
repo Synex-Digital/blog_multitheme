@@ -17,13 +17,9 @@
             <div class="col-lg-4">
                 <div class="footer-box-layout1">
                     <ul class="footer-social">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                        <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fab fa-github-alt"></i></a></li>
-                        <li><a href="#"><i class="fas fa-rss"></i></a></li>
+                        @foreach ($icon as $favicon)
+                            <li><a href="{{ $favicon->link }}"><i class="{{ $favicon->logo }}"></i></a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

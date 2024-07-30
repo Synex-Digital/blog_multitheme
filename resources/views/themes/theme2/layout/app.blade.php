@@ -1,3 +1,12 @@
+@php
+    use App\Models\Category;
+    use App\Models\Config;
+    use App\Models\Social;
+    $category = Category::where('status','active')->get();
+    $configs = Config::first();
+    $icon = Social::get();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +52,7 @@
                 <div class="offcanvas-menu-wrap" id="offcanvas-wrap">
                     <div class="offcanvas-content">
                         <div class="offcanvas-logo">
-                            <a href="index.html"><img src="{{ asset('themes/theme2/img/logo-dark2.png')}}" alt="logo"></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('themes/theme2/img/logo-dark2.png')}}" alt="logo"></a>
                         </div>
                         <ul class="offcanvas-menu">
                             <li class="nav-item">
@@ -53,13 +62,18 @@
                                 <a href="about.html">ABOUT</a>
                             </li>
                             <li class="nav-item">
-                                <a href="blog-category1.html">CATEGORIES</a>
+                                <a href="#">CATEGORIES</a>
+                                <ul class="dropdown-menu-col-1">
+                                    @foreach ($category as $cat)
+                                        <li><a class="dropdown-item" href="{{ route('theme2.categories', $cat->slug) }}">{{ $cat->name }}</a></li>
+                                    @endforeach
+                                </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="authors.html">AUTHORS</a>
+                                <a href="{{ route('theme2.all.blogs') }}">ALL BLOGS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="archives1.html">ARCHIVE</a>
+                                <a href="archives1.html">PRIVACY POLICY</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('theme2.contact') }}">CONTACT</a>
@@ -68,12 +82,9 @@
                         <div class="offcanvas-footer">
                             <div class="item-title">Follow Me</div>
                                 <ul class="offcanvas-social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-rss"></i></a></li>
+                                    @foreach ($icon as $favicon)
+                                        <li><a href="{{ $favicon->link }}"><i class="{{ $favicon->logo }}"></i></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
