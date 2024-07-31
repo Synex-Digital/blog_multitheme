@@ -40,6 +40,7 @@ Route::get('/theme2/all-blogs',[UserHomeController::class, 'theme2_all_blogs'])-
 Route::get('/theme2/blog-single', [BlogSingleController::class, 'theme2_blog_single'])->name('theme2.blog.single');
 Route::get('/theme2/blog/single/{slug}', [BlogSingleController::class, 'theme2_blog_slug'])->name('theme2.blog.slug');
 Route::get('/theme2/contact', [ContactController::class, 'theme2_contact'])->name('theme2.contact');
+Route::get('/theme2/about', [ContactController::class, 'theme2_about'])->name('theme2.about');
 
 // Route::get('/dashboard', function() {
 //     return view('dashboard.index');

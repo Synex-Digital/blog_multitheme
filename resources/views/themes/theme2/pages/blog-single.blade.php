@@ -113,29 +113,25 @@
                                 <a href="#">vacation,</a>
                             </li>
                             <li class="item-social">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                                @foreach ($icon as $favicon)
+                                    <a href="{{ $favicon->link }}"><i class="{{ $favicon->logo }}"></i></a>
+                                @endforeach
                             </li>
                             <li class="item-respons"><i class="fas fa-heart"></i>1,230</li>
                         </ul>
                     </div>
                     <div class="blog-author">
                         <div class="media media-none--xs">
-                            <img src="img/blog/blog212.html" alt="Author" class="media-img-auto">
+                            <img src="{{ asset('themes/theme2/img/blog/author.jpg')}}" height="100px" width="100px" alt="Author" class="">
                             <div class="media-body">
                                 <h4 class="item-title">{{ $blog_view->author }}</h4>
                                 <div class="item-subtitle">Author</div>
                                 <p>Dorem ipsum dolor sit amet, consectetuer adipiscing
                                     elit,sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
                                 <ul class="item-social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    @foreach ($icon as $favicon)
+                                        <li><a href="{{ $favicon->link }}"><i class="{{ $favicon->logo }}"></i></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -272,7 +268,7 @@
                             <h3 class="item-heading">02 COMMENTS</h3>
                         </div>
                         <div class="media media-none--xs">
-                            <img src="img/blog/blog216.html" alt="Blog Comments" class="img-fluid media-img-auto">
+                            <img src="{{ asset('themes/theme2/img/blog/author.jpg')}}" height="100px" width="100px" alt="Author" class="">
                             <div class="media-body">
                                 <h4 class="item-title">Jack Sparrow</h4>
                                 <div class="item-subtitle">2 Mins Ago</div>
@@ -282,7 +278,7 @@
                             </div>
                         </div>
                         <div class="media media-none--xs">
-                            <img src="img/blog/blog217.html" alt="Blog Comments" class="img-fluid media-img-auto">
+                            <img src="{{ asset('themes/theme2/img/blog/author.jpg')}}" height="100px" width="100px" alt="Author" class="">
                             <div class="media-body">
                                 <h4 class="item-title">Dakcon Nitiya</h4>
                                 <div class="item-subtitle">2 Mins Ago</div>

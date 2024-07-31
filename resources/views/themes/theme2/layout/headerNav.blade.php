@@ -51,7 +51,7 @@
                                 <a href="{{ route('home') }}">HOME</a>
                             </li>
                             <li>
-                                <a href="about.html">ABOUT</a>
+                                <a href="{{ route('theme2.about') }}">ABOUT</a>
                             </li>
                             <li>
                                 <a href="#">CATEGORIES</a>

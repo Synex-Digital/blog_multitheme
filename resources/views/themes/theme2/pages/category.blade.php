@@ -24,12 +24,12 @@
 @section('content')
     <div class="row gutters-50">
         <div class="col-lg-8">
-            <div class="blog-box-layout3">
+            {{-- <div class="blog-box-layout3">
                 <div class="item-img">
                     <img src="img/blog/blog159.html" alt="blog">
-                    {{-- <a class="play-btn popup-youtube" href="http://www.youtube.com/watch?v=1iIZeIy7TqM">
+                    <a class="play-btn popup-youtube" href="http://www.youtube.com/watch?v=1iIZeIy7TqM">
                         <i class="flaticon-play-arrow"></i>
-                    </a> --}}
+                    </a>
                 </div>
                 <div class="item-content">
                     <ul class="entry-meta meta-color-dark">
@@ -51,7 +51,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row gutters-40" id="no-equal-gallery">
                 @if ($categoryView->blogs)
@@ -116,22 +116,7 @@
                         doloer.</p>
                 </div>
             </div>
-            <div class="widget">
-                <div class="widget-newsletter-subscribe-dark">
-                    <h3>GET LATEST UPDATES</h3>
-                    <p>NEWSLETTER SUBSCRIBE</p>
-                    <form class="newsletter-subscribe-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="your e-mail address" class="form-control" name="email"
-                                data-error="E-mail field is required" required>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group mb-none">
-                            <button type="submit" class="item-btn">SUBSCRIBE</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
             <div class="widget">
                 <div class="section-heading heading-dark">
                     <h3 class="item-heading">POPULAR POSTS</h3>
@@ -140,7 +125,7 @@
                     @foreach ($recent as $sl => $blog)
                         <div class="post-box">
                             <div class="item-img">
-                                <a href="{{ route('theme2.blog.slug', $blog->slug) }}"><img src="{{ url('/') }}/{{ $blog->image }}" alt="blog"></a>
+                                <a href="{{ route('theme2.blog.slug', $blog->slug) }}"><img src="{{ url('/') }}/{{ $blog->image }}" alt="blog" width="250px" height="250px"></a>
                             </div>
                             <div class="item-content">
                                 <ul class="entry-meta meta-color-dark">
@@ -158,6 +143,7 @@
                     <a href="#"><img src="img/figure/figure5.jpg" alt="Ad" class="img-fluid"></a>
                 </div>
             </div> --}}
+            
             <div class="widget">
                 <div class="section-heading heading-dark">
                     <h3 class="item-heading">CATEGORIES</h3>
@@ -174,6 +160,23 @@
                             @endforeach
                         </li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-newsletter-subscribe-dark">
+                    <h3>GET LATEST UPDATES</h3>
+                    <p>NEWSLETTER SUBSCRIBE</p>
+                    <form class="newsletter-subscribe-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="your e-mail address" class="form-control" name="email"
+                                data-error="E-mail field is required" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group mb-none">
+                            <button type="submit" class="item-btn">SUBSCRIBE</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

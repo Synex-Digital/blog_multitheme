@@ -25,9 +25,9 @@
 <div class="row gutters-50">
     <div class="col-lg-8">
         <div class="contact-box-layout1">
-            <div class="google-map-area">
+            {{-- <div class="google-map-area">
                 <div id="googleMap" style="width:100%; height:450px; border-radius: 4px;"></div>
-            </div>
+            </div> --}}
             <div class="contact-way">
                 <div class="contact-list">
                     <h3 class="item-title">Office Address</h3>

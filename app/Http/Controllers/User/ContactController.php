@@ -89,4 +89,17 @@ class ContactController extends Controller
             'icon' => $icon,
         ]);
     }
+
+    public function theme2_about(){
+        //social icons for footer
+        $icon = Social::get();
+
+        //contact information
+        $configs = Config::first();
+
+        return view('themes.theme2.pages.about', [
+            'icon' => $icon,
+            'configs' => $configs,
+        ]);
+    }
 }
