@@ -102,4 +102,17 @@ class ContactController extends Controller
             'configs' => $configs,
         ]);
     }
+
+    public function theme2_policy(){
+        //social icons for footer
+        $icon = Social::get();
+
+        //contact information
+        $configs = Config::first();
+
+        return view('themes.theme2.pages.policy', [
+            'icon' => $icon,
+            'configs' => $configs,
+        ]);
+    }
 }

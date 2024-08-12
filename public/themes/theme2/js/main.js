@@ -118,7 +118,7 @@
     });
 
     /*-------------------------------------
-    On Scroll 
+    On Scroll
     -------------------------------------*/
     $(window).on('scroll', function () {
 
@@ -281,7 +281,7 @@
                     smartSpeed: (smartSpeed ? smartSpeed : 250),
                     dots: (dots ? true : false),
                     nav: (nav ? true : false),
-                    navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+                    navText: ['<', '>'],
                     navSpeed: (navSpeed ? true : false),
                     center: (center ? true : false),
                     responsiveClass: true,

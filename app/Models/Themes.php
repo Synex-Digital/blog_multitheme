@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Themes extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'status'
+    ];
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('status',['active','inactive']);
             $table->boolean('preset')->default(1);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

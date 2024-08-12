@@ -9,7 +9,7 @@ use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\CustomeCodeController;
 use App\Http\Controllers\SeoController;
-
+use App\Http\Controllers\ThemeSelectController;
 //Frontend Controllers
 use App\Http\Controllers\User\BlogSingleController;
 use App\Http\Controllers\User\CategoriesFrontController;
@@ -41,6 +41,8 @@ Route::get('/theme2/blog-single', [BlogSingleController::class, 'theme2_blog_sin
 Route::get('/theme2/blog/single/{slug}', [BlogSingleController::class, 'theme2_blog_slug'])->name('theme2.blog.slug');
 Route::get('/theme2/contact', [ContactController::class, 'theme2_contact'])->name('theme2.contact');
 Route::get('/theme2/about', [ContactController::class, 'theme2_about'])->name('theme2.about');
+Route::get('/theme2/policy', [ContactController::class, 'theme2_policy'])->name('theme2.policy');
+Route::get('/theme2/search', [SearchController::class, 'theme2_search'])->name('theme2.search');
 
 // Route::get('/dashboard', function() {
 //     return view('dashboard.index');
@@ -50,13 +52,14 @@ Route::get('/theme2/about', [ContactController::class, 'theme2_about'])->name('t
 
 // backend routes
 Route::resources([
-    'category' => CategoryController::class,
-    'blog' => BlogController::class,
-    'user' => UserController::class,
-    'config' => ConfigController::class,
-    'social' => SocialController::class,
-    'custom_code' => CustomeCodeController::class,
-    'seo' => SeoController::class
+    'category'      => CategoryController::class,
+    'blog'          => BlogController::class,
+    'user'          => UserController::class,
+    'config'        => ConfigController::class,
+    'social'        => SocialController::class,
+    'custom_code'   => CustomeCodeController::class,
+    'seo'           => SeoController::class,
+    'theme_select'  => ThemeSelectController::class,
 
 ]);
 

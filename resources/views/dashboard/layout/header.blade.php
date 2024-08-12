@@ -130,6 +130,7 @@
                             <li><a href="{{ route('config.create') }}">View Configurations</a></li>
                             <li><a href="{{ route('social.index') }}">Social Links</a></li>
                             <li><a href="{{ route('custom_code.index') }}">Custom Codes</a></li>
+                            <li><a href="{{ route('theme_select.index') }}">Theme Select</a></li>
 
                         </ul>
                     </li>

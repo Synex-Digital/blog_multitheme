@@ -41,11 +41,24 @@
                 <div id="header-search" class="header-search">
                     <button type="button" class="close">×</button>
                     <form class="header-search-form">
-                        <input type="search" value="" placeholder="Type here........" />
-                        <button type="submit" class="search-btn">
-                            <i class="flaticon-magnifying-glass"></i>
+                        <input class="live-search" type="search" placeholder="Type here........" />
+                        <button type="button" >
+                            <svg fill="#000000" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	                        viewBox="0 0 488.4 488.4" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6
+                                        s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2
+                                        S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7
+                                        S381.9,104.65,381.9,203.25z"/>
+                                </g>
+                            </g>
+                            </svg>
                         </button>
                     </form>
+                    <div class="container mt-3" id="search_content">
+
+                    </div>
                 </div>
                 <!-- Search Box End Here -->
                 <!-- Offcanvas Menu Start -->
@@ -59,7 +72,7 @@
                                 <a href="{{ route('home') }}">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.html">ABOUT</a>
+                                <a href="{{ route('theme2.about') }}">ABOUT</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#">CATEGORIES</a>
@@ -73,7 +86,7 @@
                                 <a href="{{ route('theme2.all.blogs') }}">ALL BLOGS</a>
                             </li>
                             <li class="nav-item">
-                                <a href="archives1.html">PRIVACY POLICY</a>
+                                <a href="{{ route('theme2.policy') }}">PRIVACY POLICY</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('theme2.contact') }}">CONTACT</a>
@@ -92,5 +105,68 @@
                     <!-- Offcanvas Menu End -->
                 </div>
                 @include('themes.theme2.layout.footerlink')
+
+                <script>
+                    $(document).ready(function() {
+
+
+                        let x = $('.live-search').on('input', function() {
+                            var query = $(this).val();
+                            const container = document.getElementById('search_content');
+                            container.innerHTML = '';
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                            $.ajax({
+                                url: "{{ route('theme2.search') }}",
+                                type: "GET",
+                                data: {
+                                    search: query,
+                                },
+                                success: function(response) {
+                                    response.data.forEach(post => {
+                                        // Create the row element
+                                        const rowElement = document.createElement('div');
+                                        rowElement.className = 'row mb-3';
+
+                                        // Create the title element
+                                        const titleElement = document.createElement('h6');
+                                        titleElement.className = 'my-0 bd-font fw-bolder';
+                                        const titleLink = document.createElement('a');
+                                        titleLink.href = `/theme2/blog/single/${post.slug}`;
+                                        titleLink.textContent = post.title;
+                                        titleLink.style.color = '#203656';
+                                        titleElement.appendChild(titleLink);
+
+                                         // Create the meta element
+                                         const metaElement = document.createElement('ul');
+                                            metaElement.className = 'meta list-inline mt-1 mb-0';
+                                            const dateItem = document.createElement('li');
+                                            dateItem.className = 'list-inline-item';
+                                            dateItem.textContent = new Date(post.updated_at)
+                                                .toLocaleDateString('en-BD', {
+                                                    year: 'numeric',
+                                                    month: 'numeric',
+                                                    day: 'numeric'
+                                                });
+                                            metaElement.appendChild(dateItem);
+
+                                            // Append the title and meta to the row element
+                                            rowElement.appendChild(titleElement);
+                                            rowElement.appendChild(metaElement);
+                                            // Append the row element to the container
+                                            container.appendChild(rowElement);
+
+                                    });
+                                },
+                                error: function(xhr, status, error) {
+                                    console.log(xhr.responseText);
+                                }
+                            });
+                        });
+                    });
+                </script>
     </body>
 </html>

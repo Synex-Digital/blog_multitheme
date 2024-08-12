@@ -23,6 +23,20 @@ class SearchController extends Controller
             'data'      => $results,
         ]);
     }
+
+    public function theme2_search(Request $request)
+    {
+        $searchTerm = $request->search;
+        $results = Blog::select('id', 'title', 'updated_at', 'slug')->where(function ($query) use ($searchTerm) {
+            $query->where('title', 'like', '%' . $searchTerm . '%')
+                ->orWhere('seo_tags', 'like', '%' . $searchTerm . '%');
+        })->take(10)
+            ->get();
+        return response()->json([
+            'status'    => 1,
+            'data'      => $results,
+        ]);
+    }
 }
 
 
