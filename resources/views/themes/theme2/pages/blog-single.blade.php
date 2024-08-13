@@ -35,16 +35,11 @@
                             <li>{{ $blog_view->updated_at->format('d/m/Y') }}</li>
                             |
                             <li>BY <a href="#">{{ $blog_view->author }}</a></li>
-                            {{-- <li><i class="far fa-clock"></i>5 Mins Read</li> --}}
                         </ul>
                         <h2 class="item-title">{{ $blog_view->title }}</h2>
-                        <ul class="item-social">
-                            <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i>SHARE</a></li>
-                            <li><a href="#" class="twitter"><i class="fab fa-twitter"></i>SHARE</a></li>
-                            <li><a href="#" class="g-plus"><i class="fab fa-google-plus-g"></i>SHARE</a></li>
-                            <li><a href="#" class="pinterst"><i class="fab fa-pinterest"></i>PIN IT</a></li>
-                            <li><a href="#" class="load-more">MORE</a></li>
-                        </ul>
+                        <p>Share on:</p>
+                        {!! $shareComponent !!}
+                        <br>
                         <ul class="response-area">
 
                             <li>
@@ -279,50 +274,42 @@
                             </div>
                         </div>
                     </div> --}}
+
                     <div class="blog-comment">
                         <div class="section-heading-4 heading-dark">
-                            <h3 class="item-heading">02 COMMENTS</h3>
+                            <h3 class="item-heading">COMMENTS</h3>
                         </div>
-                        <div class="media media-none--xs">
-                            <img src="{{ asset('themes/theme2/img/blog/author.jpg')}}" height="100px" width="100px" alt="Author" class="">
-                            <div class="media-body">
-                                <h4 class="item-title">Jack Sparrow</h4>
-                                <div class="item-subtitle">2 Mins Ago</div>
-                                <p>Bmmy text of the printing and typesetting industryorem Ipsum
-                                    has been the industry's standard dummy text ever since the</p>
-                                <a href="#" class="item-btn">Reply</a>
-                            </div>
-                        </div>
-                        <div class="media media-none--xs">
-                            <img src="{{ asset('themes/theme2/img/blog/author.jpg')}}" height="100px" width="100px" alt="Author" class="">
-                            <div class="media-body">
-                                <h4 class="item-title">Dakcon Nitiya</h4>
-                                <div class="item-subtitle">2 Mins Ago</div>
-                                <p>Bmmy text of the printing and typesetting industryorem Ipsum has
-                                    been the industry's standard dummy text ever since the</p>
-                                <a href="#" class="item-btn">Reply</a>
-                            </div>
-                        </div>
+                            @forelse ($comment as $user_comment)
+                                <div class="media media-none--xs">
+                                    <img src="{{ asset('themes/theme2/img/blog/author.jpg')}}" height="100px" width="100px" alt="Author" class="">
+                                    <div class="media-body">
+                                        <h4 class="item-title">{{ $user_comment->name }}</h4>
+                                        <div class="item-subtitle">{{ $user_comment->created_at }}</div>
+                                        <p>{{ $user_comment->message }}</p>
+                                        {{-- <a href="#" class="item-btn">Reply</a> --}}
+                                    </div>
+                                </div>
+                            @empty
+                                <p>No comments yet</p>
+                            @endforelse
                     </div>
+
                     <div class="blog-form">
                         <div class="section-heading-4 heading-dark">
                             <h3 class="item-heading">WRITE A COMMENT</h3>
                         </div>
-                        <form class="contact-form-box">
+                        <form action="{{ route('user.comment') }}" method="POST" class="contact-form-box">
+                            @csrf
                             <div class="row gutters-15">
-                                <div class="col-md-4 form-group">
-                                    <input type="text" placeholder="Name*" class="form-control" name="first_name"
-                                        data-error="Name field is required" required>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" placeholder="Name*" class="form-control" name="name"
+                                        data-error="Name field is required" required >
+                                    <input type="hidden" value="{{ $blog_view->id }}" name="blog_id">
                                     <div class="help-block with-errors"></div>
                                 </div>
-                                <div class="col-md-4 form-group">
+                                <div class="col-md-6 form-group">
                                     <input type="email" placeholder="E-mail*" class="form-control" name="email"
                                         data-error="E-mail field is required" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <input type="text" placeholder="Website*" class="form-control" name="website"
-                                        data-error="website field is required" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="col-12 form-group">
@@ -332,10 +319,10 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="col-12 form-group">
-                                    <button class="item-btn">POST COMMENT</button>
+                                    <button type="submit" class="item-btn">POST COMMENT</button>
                                 </div>
                             </div>
-                            <div class="form-response"></div>
+                            <br><br>
                         </form>
                     </div>
                 </div>
@@ -366,22 +353,26 @@
                 </div>
             </div>
             <div class="widget">
-                <div class="widget-newsletter-subscribe-dark">
-                    <h3>GET LATEST UPDATES</h3>
-                    <p>NEWSLETTER SUBSCRIBE</p>
-                    <form class="newsletter-subscribe-form">
+                <div class="widget-newsletter-subscribe-dark-2">
+                    <h3 class="item-title">GET LATEST UPDATES</h3>
+                    <form action="{{ route('newsletter.save') }}" method="POST" class="newsletter-subscribe-form">
+                        @csrf
                         <div class="form-group">
-                            <input type="text" placeholder="your e-mail address" class="form-control" name="email"
+                            <input type="text" placeholder="Type your e-mail" class="form-control" name="email"
                                 data-error="E-mail field is required" required>
                             <div class="help-block with-errors"></div>
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                        <div class="form-group mb-none">
-                            <button type="submit" class="item-btn">SUBSCRIBE</button>
+                        <div class="form-group mb-0">
+                            <button type="submit" class="item-btn">SIGNUP!</button>
                         </div>
                     </form>
                 </div>
             </div>
-
             <div class="widget">
                 <div class="widget-ad">
                     <a href="#"><img src="{{ asset('themes/theme2/img/figure/figure5.jpg')}}" alt="Ad" class="img-fluid"></a>

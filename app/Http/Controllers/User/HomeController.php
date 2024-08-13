@@ -8,8 +8,10 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Social;
 use App\Models\Config;
+use App\Models\Newsletter;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
+use ReflectionFunctionAbstract;
 
 class HomeController extends Controller
 {
@@ -132,7 +134,22 @@ class HomeController extends Controller
         ]);
     }
 
-    
+    public function newsletter_save(Request $request){
 
+        $themes = Themes::where('status','active')->first();
+        if($themes){
+            Newsletter::create([
+                'email' => $request->email,
+            ]);
+            return back();
+        }
+        else{
+            Newsletter::create([
+                'email' => $request->email,
+            ]);
+            return back();
+        }
+
+    }
 
 }

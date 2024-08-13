@@ -113,11 +113,17 @@
         <div class="widget">
             <div class="widget-newsletter-subscribe-dark-2">
                 <h3 class="item-title">SUBSCRIBE AND NEVER MISS A RECIPE AGAIN</h3>
-                <form class="newsletter-subscribe-form">
+                <form action="{{ route('newsletter.save') }}" method="POST" class="newsletter-subscribe-form">
+                    @csrf
                     <div class="form-group">
                         <input type="text" placeholder="Type your e-mail" class="form-control" name="email"
                             data-error="E-mail field is required" required>
                         <div class="help-block with-errors"></div>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="form-group mb-0">
                         <button type="submit" class="item-btn">SIGNUP!</button>

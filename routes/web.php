@@ -16,7 +16,7 @@ use App\Http\Controllers\User\CategoriesFrontController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\SearchController;
 use App\Http\Controllers\User\HomeController as UserHomeController;
-
+use App\Http\Controllers\User\NewsletterController;
 use App\Models\Themes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +43,8 @@ Route::get('/theme2/contact', [ContactController::class, 'theme2_contact'])->nam
 Route::get('/theme2/about', [ContactController::class, 'theme2_about'])->name('theme2.about');
 Route::get('/theme2/policy', [ContactController::class, 'theme2_policy'])->name('theme2.policy');
 Route::get('/theme2/search', [SearchController::class, 'theme2_search'])->name('theme2.search');
+Route::post('/newsletter/save', [UserHomeController::class, 'newsletter_save'])->name('newsletter.save');
+Route::post('/comment', [BlogSingleController::class, 'user_comment'])->name('user.comment');
 
 // Route::get('/dashboard', function() {
 //     return view('dashboard.index');
@@ -60,7 +62,7 @@ Route::resources([
     'custom_code'   => CustomeCodeController::class,
     'seo'           => SeoController::class,
     'theme_select'  => ThemeSelectController::class,
-
+    'newsletter'    => NewsletterController::class,
 ]);
 
 Auth::routes();

@@ -48,17 +48,22 @@
     </div>
     <div class="col-lg-4 sidebar-widget-area sidebar-break-md">
         <div class="widget">
-            <div class="widget-newsletter-subscribe-dark">
-                <h3>GET LATEST UPDATES</h3>
-                <p>NEWSLETTER SUBSCRIBE</p>
-                <form class="newsletter-subscribe-form">
+            <div class="widget-newsletter-subscribe-dark-2">
+                <h3 class="item-title">SUBSCRIBE AND NEVER MISS A RECIPE AGAIN</h3>
+                <form action="{{ route('newsletter.save') }}" method="POST" class="newsletter-subscribe-form">
+                    @csrf
                     <div class="form-group">
-                        <input type="text" placeholder="your e-mail address" class="form-control" name="email"
+                        <input type="text" placeholder="Type your e-mail" class="form-control" name="email"
                             data-error="E-mail field is required" required>
                         <div class="help-block with-errors"></div>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
-                    <div class="form-group mb-none">
-                        <button type="submit" class="item-btn">SUBSCRIBE</button>
+                    <div class="form-group mb-0">
+                        <button type="submit" class="item-btn">SIGNUP!</button>
                     </div>
                 </form>
             </div>
@@ -67,10 +72,10 @@
             <div class="section-heading heading-dark">
                 <h3 class="item-heading">FOLLOW ME ON</h3>
             </div>
-            <div class="widget-follow-us-2">
+            <div class="widget-follow-us">
                 <ul>
                     @foreach ($icon as $favicon)
-                        <li class="single-item"><a href="{{ $favicon->link }}"><i class="{{ $favicon->logo }}"></i></a></li>
+                    <li class="single-item"><a href="{{ $favicon->link }}"><i class="{{ $favicon->logo }}"></i></a></li>
                     @endforeach
                 </ul>
             </div>

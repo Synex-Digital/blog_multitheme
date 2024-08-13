@@ -63,9 +63,11 @@
                                 </div>
                                 <div class="item-content">
                                     <ul class="entry-meta meta-color-dark">
-                                        <li><i class="fas fa-tag"></i>{{ $blog->category->name }}</li>
-                                        <li><i class="fas fa-calendar-alt"></i>{{ $blog->updated_at->format('d/m/Y') }}</li>
-                                        <li><i class="far fa-clock"></i>{{ $blog->author }}</li>
+                                        <li>{{ $blog->category->name }}</li>
+                                        |
+                                        <li>{{ $blog->updated_at->format('d/m/Y') }}</li>
+                                        |
+                                        <li></i>{{ $blog->author }}</li>
                                     </ul>
                                     <h3 class="item-title"><a href="{{ route('theme2.blog.slug', $blog->slug) }}">{{ $blog->title }}</a></h3>
                                     <p>{{ $blog->seo_description }}</p>
@@ -191,22 +193,7 @@
                 </div>
             </div>
 
-            <div class="widget">
-                <div class="widget-newsletter-subscribe-dark">
-                    <h3>GET LATEST UPDATES</h3>
-                    <p>NEWSLETTER SUBSCRIBE</p>
-                    <form class="newsletter-subscribe-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="your e-mail address" class="form-control" name="email"
-                                data-error="E-mail field is required" required>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="form-group mb-none">
-                            <button type="submit" class="item-btn">SUBSCRIBE</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            
 
         </div>
     </div>

@@ -284,4 +284,17 @@ textarea {
     h3 {
         page-break-after: avoid;
     }
+
+
+}
+
+#social-links ul{
+    display: flex;
+    font-size: x-large;
+    flex-direction: row ;
+    justify-content: space-evenly
+}
+
+.social-button {
+    color: #3a3636;
 }
