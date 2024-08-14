@@ -508,7 +508,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #FE4F70;
+  color: #203656;
   outline: 0;
   text-decoration: none;
   -webkit-transition: all 0.2s ease-in-out;
@@ -516,7 +516,7 @@ a {
   transition: all 0.2s ease-in-out;
 }
 a:hover {
-  color: #203656;
+  color: #FE4F70;
 }
 a:focus {
   outline: 0;
@@ -1590,7 +1590,7 @@ section {
   margin-top: 30px;
 }
 .post-single ul li {
-  list-style-type: circle;
+  list-style-type: none;
 }
 
 .single-cover {
@@ -3184,5 +3184,13 @@ button:focus {
     display: block;
   }
 }
+
+#social-links ul {
+    display: flex;
+    font-size: x-large;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 
 /*# sourceMappingURL=style.css.map */

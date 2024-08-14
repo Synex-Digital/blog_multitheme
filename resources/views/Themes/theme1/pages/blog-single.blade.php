@@ -40,7 +40,20 @@
                         <div class="post-content clearfix">
                             <p>{!! $blog_view->content !!}</p>
                         </div>
-
+                        <br><br>
+                        <div class="share">
+                            <div class="row d-flex align-items-center gy-6">
+                                <div class="col-md-4">
+                                    <h3 class="section-title">Share on:</h3>
+                                    <img src="{{ asset('themes/theme1/images/wave.svg') }}" class="wave"
+                                    alt="wave" />
+                                </div>
+                                <div class="col-md-8">
+                                    {!! $shareComponent !!}
+                                </div>
+                            </div>
+                        </div>
+                        <br>
                 </div>
             </div>
             @endsection

@@ -588,10 +588,13 @@
 								<img src="{{ asset('themes/theme1/images/wave.svg') }}" class="wave" alt="wave" />
 							</div>
 							<div class="widget-content">
-								<span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
-								<form>
+								<span class="newsletter-headline text-center mb-3">Join as our subscribers!</span>
+								<form action="{{ route('newsletter.save') }}" method="POST">@csrf
+                                    @if(session('success'))
+                                        <div class="alert alert-success">{{ session('success') }}</div>
+                                    @endif
 									<div class="mb-2">
-										<input class="form-control w-100 text-center" placeholder="Email address…" type="email">
+										<input class="form-control w-100 text-center" placeholder="Email address…" type="email" name="email">
 									</div>
 									<button class="btn btn-default btn-full" type="submit">Sign Up</button>
 								</form>

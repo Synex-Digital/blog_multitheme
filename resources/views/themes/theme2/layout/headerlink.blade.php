@@ -1,7 +1,7 @@
 <!-- this blade is for all the header links -->
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="{{ asset('themes/theme2/img/favicon.png')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset($configs->favicon) }}">
 <!-- Normalize CSS -->
 <link rel="stylesheet" href="{{ asset('themes/theme2/css/normalize.css')}}">
 <!-- Main CSS -->

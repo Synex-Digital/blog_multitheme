@@ -43,10 +43,22 @@ class BlogSingleController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
+        $shareComponent = \Share::page(
+            'http://127.0.0.1:8000/theme1/blog/single/'.$slug,
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()
+        ->reddit();
+
+
         return view('themes.theme1.pages.blog-single', [
             'blog_view' => $blog,
             'icon' => $icon,
             'configs' => $configs,
+            'shareComponent' => $shareComponent,
         ]);
     }
 
@@ -102,6 +114,8 @@ class BlogSingleController extends Controller
 
         $comment = Comment::where('blog_id', $blog->id)->get();
 
+        $commentsCount = $comment->count();
+
         $shareComponent = \Share::page(
             'http://127.0.0.1:8000/theme2/blog/single/'.$slug,
         )
@@ -117,6 +131,7 @@ class BlogSingleController extends Controller
             'icon' => $icon,
             'configs' => $configs,
             'comment' => $comment,
+            'commentsCount' => $commentsCount,
             'shareComponent' => $shareComponent,
         ]);
     }

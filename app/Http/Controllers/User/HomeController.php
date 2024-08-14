@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Social;
 use App\Models\Config;
 use App\Models\Newsletter;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
 use ReflectionFunctionAbstract;
@@ -124,11 +125,14 @@ class HomeController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
+        // $commentsCount = Comment::where('blog_id', $blog_items->id)->count();
+
         return view('themes.theme2.pages.all-blog', [
             'blog_items' => $blog_items,
             'recent' => $recent,
             'icon' => $icon,
             'configs' => $configs,
+            // 'commentsCount' => $commentsCount,
             'category' => $category,
 
         ]);
@@ -141,13 +145,13 @@ class HomeController extends Controller
             Newsletter::create([
                 'email' => $request->email,
             ]);
-            return back();
+            return back()->with('success', 'Thanks for subscribing us.');
         }
         else{
             Newsletter::create([
                 'email' => $request->email,
             ]);
-            return back();
+            return back()->with('success', 'Thanks for subscribing us.');
         }
 
     }

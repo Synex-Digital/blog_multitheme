@@ -48,22 +48,6 @@
                                         <h5 class="post-title mb-3 mt-3"><a href="{{ route('blog_slug', $blog->slug) }}">{{ $blog->title }}</a></h5>
                                         <p class="excerpt mb-0">{{ $blog->seo_description }}</p>
                                     </div>
-                                    <div class="post-bottom clearfix d-flex align-items-center">
-                                        <div class="social-share me-auto">
-                                            <button class="toggle-button icon-share"></button>
-                                            <ul class="icons list-unstyled list-inline mb-0">
-                                                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="more-button float-end">
-                                            <a href="{{ route('blog_slug', $blog->slug) }}"><span class="icon-options"></span></a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         @endforeach

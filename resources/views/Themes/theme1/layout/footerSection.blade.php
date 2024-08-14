@@ -4,7 +4,8 @@
 				<div class="row d-flex align-items-center gy-4">
 					<!-- copyright text -->
 					<div class="col-md-4">
-						<span class="copyright">© 2024 Katen. Edited by Synex Digital.</span>
+						<span class="copyright">© 2024 {{ $configs->name }}. All Rights Reserved.</span><br>
+                        <span class="copyright">Edited by Synex Digital.</span>
 					</div>
 
 					<!-- social icons -->

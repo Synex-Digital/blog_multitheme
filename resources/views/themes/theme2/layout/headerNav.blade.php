@@ -14,14 +14,14 @@
                                     </span>
                                 </button>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 d-flex justify-content-center">
                     <div class="logo-area">
                         <a href="{{ route('home') }}" class="temp-logo" id="temp-logo">
-                            <img src="{{ asset('themes/theme2/img/logo-light.png')}}" alt="logo" class="img-fluid">
+                            <img width="50" height="50" src="{{ asset($configs->logo) }}" alt="logo" class="img-fluid">
                         </a>
                     </div>
                 </div>

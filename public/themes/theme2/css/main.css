@@ -292,7 +292,7 @@ textarea {
     display: flex;
     font-size: x-large;
     flex-direction: row ;
-    justify-content: space-evenly
+    justify-content: space-evenly;
 }
 
 .social-button {

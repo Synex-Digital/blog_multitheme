@@ -4,13 +4,13 @@
         <div class="row d-flex align-items-center">
             <div class="col-lg-4">
                 <div class="footer-box-layout1">
-                    <div class="copyright">© 2024 Synex Digital. All Rights Reserved.</div>
+                    <div class="copyright">© 2024 {{ $configs->name }}. All Rights Reserved. <br>Edited by Synex Digital.</div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="footer-box-layout1">
                     <div class="footer-logo">
-                        <a href="index.html"><img src="{{ asset('themes/theme2/img/logo-light.png')}}" alt="logo"></a>
+                        <a href="index.html"><img width="80" height="80" src="{{ asset($configs->logo) }}" alt="logo"></a>
                     </div>
                 </div>
             </div>

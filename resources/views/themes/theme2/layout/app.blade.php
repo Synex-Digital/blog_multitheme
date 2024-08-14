@@ -65,7 +65,7 @@
                 <div class="offcanvas-menu-wrap" id="offcanvas-wrap">
                     <div class="offcanvas-content">
                         <div class="offcanvas-logo">
-                            <a href="{{ route('home') }}"><img src="{{ asset('themes/theme2/img/logo-dark2.png')}}" alt="logo"></a>
+                            <a href="{{ route('home') }}"><img width="100" height="100" src="{{ asset($configs->logo) }}" alt="logo"></a>
                         </div>
                         <ul class="offcanvas-menu">
                             <li class="nav-item">
