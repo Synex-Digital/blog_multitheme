@@ -17,12 +17,12 @@
 
     <section class="main-content mt-3">
         <div class="row-gy-4">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <!-- post single -->
                 <div class="post post-single">
 
 
-
+                    <div class="post-upper">
                     <!-- post header -->
                         <div class="post-header">
                             <h1 class="title mt-0 mb-3">{{ $blog_view->title }}</h1>
@@ -36,6 +36,8 @@
                         <div class="featured-image">
                             <img src="{{ url('/') }}/{{ $blog_view->image }}" alt="post-title" />
                         </div>
+                    </div>
+                    
                         <!-- post content -->
                         <div class="post-content clearfix">
                             <p>{!! $blog_view->content !!}</p>

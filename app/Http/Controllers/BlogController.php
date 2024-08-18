@@ -42,9 +42,6 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(Photo::upload($request->image,'/','sf'));
-        // die();
-
         //old
         $request->validate([
             'category_id'       => 'required',
@@ -54,15 +51,19 @@ class BlogController extends Controller
             'seo_title'         => 'required',
             'seo_tags'          => 'required',
             'seo_description'   => 'required',
-
+            'image'             => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:1024',
         ]);
+
         $blog = new Blog();
+
+        //Uploading
+        Photo::upload($request->image, 'dashboards/theme1/images/blog', 'BLOG', [640, 420]);
 
         $blog->category_id      = $request->category_id;
         $blog->author           = $request->author;
         $blog->title            = $request->title;
         $blog->content          = $request->content;
-        $blog->image            = $request->has('image') ? Self::upload($request) : '';
+        $blog->image            = Photo::$name?Photo::$name:'Null';
         $blog->seo_title        = $request->seo_title;
         $blog->seo_description  = $request->seo_description;
         $blog->seo_tags         = $request->seo_tags;
@@ -76,6 +77,7 @@ class BlogController extends Controller
         $blog->save();
 
         return back()->with('success', 'Blog created successfully');
+
 
     }
 
@@ -129,17 +131,13 @@ class BlogController extends Controller
         $blog->seo_tags         = $request->seo_tags;
         $blog->status           = $request->status;
         $blog->slug             = $request->slug;
-        $oldImage               = $blog->image;
 
-        if ($request->image !== null){
-            if (file_exists($oldImage)) {
-                unlink($oldImage);
-                File::delete($oldImage);
-            }
-            if ($request->has('image')) {
-                $blog->image = Self::upload($request);
-            }
+        if ($request->has('image')) {
+            Photo::delete($blog->image);
+            Photo::upload($request->image, 'dashboards/theme1/images/blog', 'BLOG', [640, 420]);
+            $blog->image = Photo::$name?Photo::$name:'Null';
         }
+
 
         $blog->save();
         return back()->with('success', 'Blog updated successfully');
@@ -153,12 +151,15 @@ class BlogController extends Controller
     {
         $blog = Blog::find($id);
         $blog->delete();
+
+        Photo::delete($blog->image);
         return back()->with('danger', 'Blog deleted!!');
     }
 
-    static function upload($request){
-        $imageName ='dashboards/theme1/images/blog/'. time() . '.' . $request->image->extension();
-        $request->image->move(public_path('dashboards/theme1/images/blog'), $imageName);
-        return $imageName;
-    }
+    // static function upload($request){
+    //     Photo::upload($image, 'dashboards/theme1/images/blog',  $ . 'PRO', [1100, 1100]);
+    //     // $imageName ='dashboards/theme1/images/blog/'. time() . '.' . $request->image->extension();
+    //     // $request->image->move(public_path('dashboards/theme1/images/blog'), $imageName);
+    //     // return $imageName;
+    // }
 }

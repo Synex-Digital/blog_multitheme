@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Photo;
 use Psy\Output\Theme;
 
 class CategoryController extends Controller
@@ -41,11 +42,13 @@ class CategoryController extends Controller
 
         $category = new Category();
 
+        Photo::upload($request->image, 'dashboards/theme1/images/category', 'CAT', [640, 480]);
+
         $category->name             = $request->name;
         $category->seo_title        = $request->seo_title;
         $category->seo_description  = $request->seo_description;
         $category->seo_tags         = $request->seo_tags;
-        $category->image            = Self::upload($request);
+        $category->image            = Photo::$name?Photo::$name:'Null';
         $category->status           = $request->status;
         if($request->slug != null){
             $category->slug         = $request->slug;
@@ -84,7 +87,7 @@ class CategoryController extends Controller
 
         $request->validate([
             'name'  => 'required',
-            'image' => 'required|mimes:png,jpg,webp,jpeg,svg|max:2048',
+            'image' => 'required|mimes:png,jpg,webp,jpeg,svg|max:1024',
         ]);
 
         $category->name             = $request->name;
@@ -93,15 +96,14 @@ class CategoryController extends Controller
         $category->seo_tags         = $request->seo_tags;
         $category->status           = $request->status;
         $category->slug             = Str::slug($request->name, '-');
-        $oldImage                   = $category->image;
 
-        if (file_exists($oldImage)) {
-            unlink($oldImage);
-            File::delete($oldImage);
-        }
+
         if ($request->has('image')) {
-            $category->image = self::upload($request);
+            Photo::delete($category->image);
+            Photo::upload($request->image, 'dashboards/theme1/images/category', 'CAT', [640, 480]);
+            $category->image = Photo::$name?Photo::$name:'Null';
         }
+
         $category           ->save();
         return back()       ->with('success', 'Category updated successfully');
     }
@@ -113,12 +115,9 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
+
+        Photo::delete($category->image);
         return back()->with('danger', 'Category deleted!!');
     }
 
-    static function upload($request){
-        $imageName ='dashboards/theme1/images/category/' . time() . '.' . $request->image->extension();
-        $request->image->move(public_path('dashboards/theme1/images/category'), $imageName);
-        return $imageName;
-    }
 }

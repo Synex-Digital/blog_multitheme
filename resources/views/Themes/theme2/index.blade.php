@@ -13,7 +13,6 @@
                 data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="1"
                 data-r-large-nav="true" data-r-large-dots="false" data-r-extra-large="1"
                 data-r-extra-large-nav="true" data-r-extra-large-dots="false">
-                <div class="owl-nav"></div>
                 @foreach ($recent as $blog_recent)
                     <div class="slider-box-layout4">
                         <div class="item-img">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Config;
 use Illuminate\Support\Facades\File;
+use Photo;
 
 class ConfigController extends Controller
 {
@@ -34,16 +35,20 @@ class ConfigController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'favicon'          => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
-            'logo'             => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:2048',
+            'favicon'          => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:1024',
+            'logo'             => 'required|image|mimes:jpeg,png,jpg,webp,jfif|max:1024',
             'address'          => 'required',
             'email'            => 'required',
             'phone'            => 'required',
             'status'           => 'required',
         ]);
         $config = new Config();
-        $config->favicon        = self::uploadFavicon($request);
-        $config->logo           = self::uploadLogo($request);
+
+        Photo::upload($request->favicon, 'dashboards/theme1/images/config_pics/favicon', 'FAV', [600, 500]);
+        Photo::upload($request->logo, 'dashboards/theme1/images/config_pics/logo', 'LOGO', [600, 500]);
+
+        $config->favicon        = Photo::$name?Photo::$name:'Null';
+        $config->logo           = Photo::$name?Photo::$name:'Null';
         $config->name           = $request->name;
         $config->address        = $request->address;
         $config->email          = $request->email;
@@ -91,25 +96,19 @@ class ConfigController extends Controller
         $config->phone          = $request->phone;
         $config->status         = $request->status;
 
-        $oldFav = $config->favicon;
-        $oldLogo = $config->logo;
-        if (file_exists($oldFav)) {
-            unlink($oldFav);
-            File::delete($oldFav);
-        }
-
-        if (file_exists($oldLogo)) {
-            unlink($oldLogo);
-            File::delete($oldLogo);
-        }
 
         if ($request->has('favicon')) {
-            $config->favicon = Self::uploadFavicon($request);
+            Photo::delete($config->favicon);
+            Photo::upload($request->image, 'dashboards/theme1/images/config_pics/favicon', 'FAV', [600, 500]);
+            $config->favicon = Photo::$name?Photo::$name:'Null';
         }
 
         if ($request->has('logo')) {
-            $config->logo = Self::uploadLogo($request);
+            Photo::delete($config->logo);
+            Photo::upload($request->image, 'dashboards/theme1/images/config_pics/logo', 'LOGO', [600, 500]);
+            $config->logo = Photo::$name?Photo::$name:'Null';
         }
+
         $config->save();
         return back()->with('success', 'Config updated successfully');
     }
@@ -121,18 +120,11 @@ class ConfigController extends Controller
     {
         $config = Config::find($id);
         $config->delete();
+
+        Photo::delete($config->logo);
+        Photo::delete($config->favicon);
         return back()->with('danger', 'Blog deleted!!');
     }
 
-    static function uploadLogo($request){
-        $imageName ='dashboards/theme1/images/config_pics/logo/'. time() . '.' . $request->logo->extension();
-        $request->logo->move(public_path('dashboards/theme1/images/config_pics/logo'), $imageName);
-        return $imageName;
-    }
 
-    static function uploadFavicon($request){
-        $imageName ='dashboards/theme1/images/config_pics/favicon/'. time() . '.' . $request->favicon->extension();
-        $request->favicon->move(public_path('dashboards/theme1/images/config_pics/favicon'), $imageName);
-        return $imageName;
-    }
 }

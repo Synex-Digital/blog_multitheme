@@ -9,7 +9,7 @@ use App\Models\Social;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Config;
-
+use Photo;
 
 class BlogSingleController extends Controller
 {
