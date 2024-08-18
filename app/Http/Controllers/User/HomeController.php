@@ -29,6 +29,8 @@ class HomeController extends Controller
         //for recent blog
         $recent = Blog::orderBy('id', 'desc')->take(4)->get();
 
+        $blog_paginate = Blog::where('status', 'active')->paginate(12);
+
         //for social icons
         $icon = Social::get();
 
@@ -52,6 +54,7 @@ class HomeController extends Controller
                 'icon' => $icon,
                 'configs' => $configs,
                 'banner' => $banner,
+                'blog_paginate' => $blog_paginate,
             ]);
 
         }
@@ -69,6 +72,7 @@ class HomeController extends Controller
                 'icon' => $icon,
                 'configs' => $configs,
                 'banner' => $banner,
+                'blog_paginate' => $blog_paginate,
             ]);
         }
     }

@@ -139,7 +139,11 @@
 						</div>
 					</div>
 
-					<div class="spacer" data-height="50"></div>
+					<div class="spacer" data-height="50" style="height: 30px;"></div>
+
+                    <div class="row">
+                        {{ $blog_paginate->links('pagination::bootstrap-4') }}
+                    </div>
 
 					<!-- horizontal ads -->
 					<div class="ads-horizontal text-md-center">

@@ -53,12 +53,12 @@
                 </div>
             @endforeach
         </div>
+
+
+        <div class="spacer" data-height="50" style="height: 30px;"></div>
+
         <div class="pagination-layout1">
-            <ul>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-            </ul>
+            {{ $blog_paginate->links('pagination::bootstrap-4') }}
         </div>
 
     </div>
