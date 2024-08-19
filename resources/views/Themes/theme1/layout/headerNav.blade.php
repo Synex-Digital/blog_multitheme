@@ -3,7 +3,7 @@
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-xl">
 				<!-- site logo -->
-				<a class="site-logo navbar-brand" href="{{ route('home') }}"><img src="{{asset($configs->logo) }}" alt="logo" /></a>
+				<a class="site-logo navbar-brand" href="{{ route('home') }}"><img width="80" src="{{asset($configs->logo) }}" alt="logo" /></a>
 
 				<div class="collapse navbar-collapse">
 					<!-- menus -->

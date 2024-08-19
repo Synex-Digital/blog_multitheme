@@ -9,16 +9,22 @@ use App\Models\Category;
 use App\Models\Social;
 use App\Models\Config;
 use App\Models\Newsletter;
-use App\Models\Comment;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
-use ReflectionFunctionAbstract;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class HomeController extends Controller
 {
     public function index(){
         $themes = Themes::where('status','active')->first();
-// dd($themes);
+
+        SEOMeta::setTitle('Home');
+        // SEOMeta::setDescription('Worem Ipsum Nam nec tellus a odio tincidunt auctor. Proin gravida nibh vel velit auctor aliquet. Bendum auctor, nisi elit conseq aeuat ipsum, nec sagittis sem nibhety');
+        SEOMeta::setKeywords('home, synex, digital');
+        // OpenGraph::setDescription('Worem Ipsum Nam nec tellus a odio tincidunt auctor. Proin gravida nibh vel velit auctor aliquet. Bendum auctor, nisi elit conseq aeuat ipsum, nec sagittis sem nibhety');
+        OpenGraph::setTitle('Home');
+
+
         //for blog list show
         $blog_items = Blog::get();
 
@@ -102,13 +108,21 @@ class HomeController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
+        $blog_paginate = Blog::where('status', 'active')->paginate(12);
+
+        SEOMeta::setTitle('All Blogs');
+        // SEOMeta::setDescription('Here all blogs of the site are listed');
+        SEOMeta::setKeywords('yhgu,ugu,uyu');
+        // OpenGraph::setDescription('Here all blogs of the site are listed');
+        OpenGraph::setTitle('All Blogs');
+
         return view('themes.theme1.pages.all-blog', [
             'blog_items' => $blog_items,
             'recent' => $recent,
             'icon' => $icon,
             'configs' => $configs,
             'category' => $category,
-
+            'blog_paginate' => $blog_paginate,
         ]);
     }
 
@@ -129,6 +143,15 @@ class HomeController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
+        $blog_paginate = Blog::where('status', 'active')->paginate(12);
+
+
+        SEOMeta::setTitle('All Blogs');
+        // SEOMeta::setDescription('Here all blogs of the site are listed');
+        SEOMeta::setKeywords('yhgu,ugu,uyu');
+        // OpenGraph::setDescription('Here all blogs of the site are listed');
+        OpenGraph::setTitle('All Blogs');
+
         // $commentsCount = Comment::where('blog_id', $blog_items->id)->count();
 
         return view('themes.theme2.pages.all-blog', [
@@ -138,6 +161,7 @@ class HomeController extends Controller
             'configs' => $configs,
             // 'commentsCount' => $commentsCount,
             'category' => $category,
+            'blog_paginate' => $blog_paginate,
 
         ]);
     }

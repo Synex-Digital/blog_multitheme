@@ -6,7 +6,8 @@ use App\Models\Category;
 use App\Models\Blog;
 use App\Models\Social;
 use App\Models\Config;
-
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 use Illuminate\Http\Request;
 
@@ -27,6 +28,13 @@ class CategoriesFrontController extends Controller
             $icon = Social::get();
             //for logo and favicon
             $configs = Config::first();
+
+            SEOMeta::setTitle($categoryView->seo_title);
+            SEOMeta::setDescription($categoryView->seo_description);
+            SEOMeta::setKeywords($categoryView->seo_tags);
+            OpenGraph::setDescription($categoryView->seo_description);
+            OpenGraph::setTitle($categoryView->seo_title);
+
             return view('themes.theme1.pages.category', [
                 'categoryBlog' => $categoryBlog,
                 'categoryView' => $categoryView,
@@ -56,6 +64,13 @@ class CategoriesFrontController extends Controller
             $icon = Social::get();
             //for logo and favicon
             $configs = Config::first();
+
+            SEOMeta::setTitle($categoryView->seo_title);
+            SEOMeta::setDescription($categoryView->seo_description);
+            SEOMeta::setKeywords($categoryView->seo_tags);
+            OpenGraph::setDescription($categoryView->seo_description);
+            OpenGraph::setTitle($categoryView->seo_title);
+
             return view('themes.theme2.pages.category', [
                 'categoryBlog' => $categoryBlog,
                 'categoryView' => $categoryView,

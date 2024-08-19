@@ -129,6 +129,7 @@
                                         <ul class="meta list-inline mt-4 mb-0">
                                             <li class="list-inline-item"><a href="#">{{ $blog->author }}</a></li>
                                             <li class="list-inline-item">{{ $blog->updated_at->format('d/m/Y') }}</li>
+                                            <li class="list-inline-item"><i class="far fa-eye"> {{ $blog->view_count ?? '0' }}</i></li>
                                         </ul>
                                         <h5 class="post-title mb-3 mt-3"><a href="{{ route('blog_slug', $blog->slug) }}">{{ $blog->title }}</a></h5>
                                         <p class="excerpt mb-0">{{ $blog->seo_description }}</p>
@@ -531,7 +532,7 @@
                         <div class="widget rounded">
                             <div class="widget-about data-bg-image text-center">
                                 <img src="{{ $configs->logo }}" alt="logo" class="mb-4" />
-                                <p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
+                                <p class="mb-4">Hello, We’re content writer who is fascinated by content food, travel, fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
                                 <ul class="social-icons list-unstyled list-inline mb-0">
                                     @foreach ($icon as $favicon)
                                         <li class="list-inline-item"><a href="{{ $favicon->link }}"><i class="{{ $favicon->logo }}"></i></a></li>

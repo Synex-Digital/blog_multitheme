@@ -66,6 +66,7 @@
                                     <div class="mb-3 col-md-6">
                                         <label for="formFile" class="form-label">Image</label>
                                         <input class="form-control" type="file" id="formFile"  name="image">
+                                        <span class="text-red">* Image size should be 680x420 px and should be less than 1MB</span>
                                     </div>
 
                                     <div class="form-group row">

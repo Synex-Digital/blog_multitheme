@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('content');
             $table->string('image')->nullable();
-            $table->integer('view_count')->nullable();
+            $table->integer('view_count')->default('0');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->string('seo_title');
             $table->longText('seo_description');

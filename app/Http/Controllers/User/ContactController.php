@@ -7,6 +7,9 @@ use App\Models\Category;
 use App\Models\Blog;
 use App\Models\Social;
 use App\Models\Config;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+
 
 class ContactController extends Controller
 {
@@ -23,6 +26,12 @@ class ContactController extends Controller
 
         //for logo and favicon
         $configs = Config::first();
+
+        SEOMeta::setTitle('Contact Us');
+        // SEOMeta::setDescription('Contact page of the site for contact information');
+        SEOMeta::setKeywords('yhgu,ugu,uyu');
+        // OpenGraph::setDescription('Contact page of the site for contact information');
+        OpenGraph::setTitle('Contact Us');
 
         return view('themes.theme1.pages.contact', [
             'categories' => $categories,
@@ -46,6 +55,12 @@ class ContactController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
+        SEOMeta::setTitle('About Us');
+        // SEOMeta::setDescription('About page of the site for sites information');
+        SEOMeta::setKeywords('yhgu,ugu,uyu');
+        // OpenGraph::setDescription('About page of the site for sites information');
+        OpenGraph::setTitle('About Us');
+
         return view('themes.theme1.pages.about', [
             'blog_item' => $blog_item,
             'categories' => $categories,
@@ -68,6 +83,12 @@ class ContactController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
+        SEOMeta::setTitle('Policy');
+        // SEOMeta::setDescription('Policy page of the site for sites legal information');
+        SEOMeta::setKeywords('dsf, defe, eef');
+        // OpenGraph::setDescription('Policy page of the site for sites legal information');
+        OpenGraph::setTitle('Policy');
+
         return view('themes.theme1.pages.policy', [
             'blog_item' => $blog_item,
             'categories' => $categories,
@@ -84,6 +105,12 @@ class ContactController extends Controller
         //social icons for footer
         $icon = Social::get();
 
+        SEOMeta::setTitle('Contact Us');
+        // SEOMeta::setDescription('Contact page of the site for contact information');
+        SEOMeta::setKeywords('yhgu,ugu,uyu');
+        // OpenGraph::setDescription('Contact page of the site for contact information');
+        OpenGraph::setTitle('Contact Us');
+
         return view('themes.theme2.pages.contact', [
             'configs' => $configs,
             'icon' => $icon,
@@ -97,6 +124,12 @@ class ContactController extends Controller
         //contact information
         $configs = Config::first();
 
+        SEOMeta::setTitle('About Us');
+        // SEOMeta::setDescription('About page of the site for sites information');
+        SEOMeta::setKeywords('edfju, kedfn, kk');
+        // OpenGraph::setDescription('About page of the site for sites information');
+        OpenGraph::setTitle('About Us');
+
         return view('themes.theme2.pages.about', [
             'icon' => $icon,
             'configs' => $configs,
@@ -109,6 +142,12 @@ class ContactController extends Controller
 
         //contact information
         $configs = Config::first();
+
+        SEOMeta::setTitle('Policy');
+        // SEOMeta::setDescription('Policy page of the site for sites legal information');
+        SEOMeta::setKeywords('dsf, defe, eef');
+        // OpenGraph::setDescription('Policy page of the site for sites legal information');
+        OpenGraph::setTitle('Policy');
 
         return view('themes.theme2.pages.policy', [
             'icon' => $icon,

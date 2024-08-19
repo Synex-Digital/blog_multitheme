@@ -10,6 +10,8 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Config;
 use Photo;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class BlogSingleController extends Controller
 {
@@ -42,6 +44,15 @@ class BlogSingleController extends Controller
 
         //for logo and favicon
         $configs = Config::first();
+
+        $blog->increment('view_count');
+            $blog->save();
+
+        SEOMeta::setTitle($blog->seo_title);
+        SEOMeta::setDescription($blog->seo_description);
+        SEOMeta::setKeywords($blog->seo_tags);
+        OpenGraph::setDescription($blog->seo_description);
+        OpenGraph::setTitle($blog->seo_title);
 
         $shareComponent = \Share::page(
             'http://127.0.0.1:8000/theme1/blog/single/'.$slug,
@@ -116,6 +127,15 @@ class BlogSingleController extends Controller
 
         $commentsCount = $comment->count();
 
+        $blog->increment('view_count');
+            $blog->save();
+
+        SEOMeta::setTitle($blog->seo_title);
+        SEOMeta::setDescription($blog->seo_description);
+        SEOMeta::setKeywords($blog->seo_tags);
+        OpenGraph::setDescription($blog->seo_description);
+        OpenGraph::setTitle($blog->seo_title);
+
         $shareComponent = \Share::page(
             'http://127.0.0.1:8000/theme2/blog/single/'.$slug,
         )
@@ -133,6 +153,7 @@ class BlogSingleController extends Controller
             'comment' => $comment,
             'commentsCount' => $commentsCount,
             'shareComponent' => $shareComponent,
+
         ]);
     }
 

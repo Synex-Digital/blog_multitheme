@@ -30,6 +30,7 @@
                                 <li class="list-inline-item"><a href="#">{{ $blog_view->author }}</a></li>
                                 <li class="list-inline-item"><a href="#">Trending</a></li>
                                 <li class="list-inline-item">{{ $blog_view->updated_at->format('d/m/Y') }}</li>
+                                <li class="list-inline-item"><i class="far fa-eye"> {{ $blog_view->view_count ?? '0' }}</i></li>
                             </ul>
                         </div>
                         <!-- featured image -->
@@ -37,7 +38,7 @@
                             <img src="{{ url('/') }}/{{ $blog_view->image }}" alt="post-title" />
                         </div>
                     </div>
-                    
+
                         <!-- post content -->
                         <div class="post-content clearfix">
                             <p>{!! $blog_view->content !!}</p>

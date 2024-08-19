@@ -42,6 +42,7 @@
                                         <ul class="meta list-inline mb-0">
                                             <li class="list-inline-item"><a href="#">{{ $blog->author }}</a></li>
                                             <li class="list-inline-item">{{ $blog->updated_at->format('d/m/Y') }}</li>
+                                            <li class="list-inline-item"><i class="far fa-eye"> {{ $blog->view_count ?? '0' }}</i></li>
                                         </ul>
                                         <h5 class="post-title mb-3 mt-3"><a href="{{ route('blog_slug', $blog->slug) }}">{{ $blog->title }}</a></h5>
                                         <p class="excerpt mb-0">{{ $blog->seo_description }}</p>
