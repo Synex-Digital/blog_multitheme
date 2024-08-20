@@ -30,6 +30,7 @@
                                     <th><strong>Email</strong></th>
                                     <th><strong>Address</strong></th>
                                     <th><strong>Number</strong></th>
+                                    <th><strong>URL</strong></th>
                                     <th><strong>Status</strong></th>
                                     <th><strong>Action</strong></th>
                                 </tr>
@@ -50,6 +51,8 @@
                                         <td><span class="w-space-no">{{ $configs->address }}</span></td>
 
                                         <td><span class="w-space-no">{{ $configs->phone }}</span></td>
+
+                                        <td><span class="w-space-no">{{ $configs->url }}</span></td>
 
                                         <td><span class="badge light {{ $configs->status == 'inactive' ? 'badge-danger' : 'badge light' }} badge-success">{{ $configs->status }}</span></td>
 

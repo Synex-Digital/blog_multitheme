@@ -7,8 +7,12 @@ use App\Models\Category;
 use App\Models\Blog;
 use App\Models\Social;
 use App\Models\Config;
+use App\Models\Seo;
+use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOTools;
+use Artesaos\SEOTools\Facades\TwitterCard;
 
 
 class ContactController extends Controller
@@ -27,11 +31,68 @@ class ContactController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
-        SEOMeta::setTitle('Contact Us');
-        // SEOMeta::setDescription('Contact page of the site for contact information');
-        SEOMeta::setKeywords('yhgu,ugu,uyu');
-        // OpenGraph::setDescription('Contact page of the site for contact information');
-        OpenGraph::setTitle('Contact Us');
+        $img = null;
+        $url = null;
+        $name = null;
+
+        if($configs){
+            $img = url('/').'/'.$configs->logo;
+            $url = $configs->url;
+            $name = $configs->name;
+
+            //canonical
+            SEOMeta::setCanonical($configs->url);
+        }
+
+        $seo = Seo::where('page', 'home')->first();
+
+        if($seo){
+
+            // Set SEO meta tags
+            SEOMeta::setTitle('Contact Us - '.$seo->seo_title);
+            SEOMeta::setDescription($seo->seo_description);
+            SEOMeta::setKeywords($seo->seo_tags); // Set keywords
+            SEOTools::opengraph()->setUrl(url()->current());
+
+            //OpenGraph
+            OpenGraph::setUrl(url()->current());
+            OpenGraph::setTitle($seo->seo_title); // define title
+            OpenGraph::setDescription($seo->seo_description); // define description
+            OpenGraph::setType('webpage');
+            OpenGraph::setUrl(url()->current()); // define url
+            OpenGraph::addImage($img); // add image url
+            OpenGraph::setSiteName($name); // define site_name
+
+            //twitter
+            TwitterCard::setUrl(url()->current()); // url of twitter card tag
+            TwitterCard::setImage($img);
+
+            //JsonLd
+
+            JsonLd::setType('Webpage');
+            JsonLd::setTitle($seo->seo_title);
+            JsonLd::setDescription($seo->seo_description);
+            JsonLd::setUrl(url()->current());
+            JsonLd::addValue('datePublished', $seo->created_at);
+            JsonLd::addValue('dateModified', $seo->updated_at);
+            // JsonLd::addValue('isPartOf', [
+            //     "@type" => "WebSite",
+            //     "@id" => $url,
+            //     "url" => $url
+            // ]);
+            JsonLd::addValue('publisher', [
+                'Organization' => 'Synex Digital',
+                '@type' => 'Webpage',
+                'name' => $name,
+                'url' => $url,
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => $img,
+                    'caption' => $seo->seo_description,
+                    'contentUrl' => url()->current(),
+                ],
+            ]);
+        }
 
         return view('themes.theme1.pages.contact', [
             'categories' => $categories,
@@ -55,11 +116,68 @@ class ContactController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
-        SEOMeta::setTitle('About Us');
-        // SEOMeta::setDescription('About page of the site for sites information');
-        SEOMeta::setKeywords('yhgu,ugu,uyu');
-        // OpenGraph::setDescription('About page of the site for sites information');
-        OpenGraph::setTitle('About Us');
+        $img = null;
+        $url = null;
+        $name = null;
+
+        if($configs){
+            $img = url('/').'/'.$configs->logo;
+            $url = $configs->url;
+            $name = $configs->name;
+
+            //canonical
+            SEOMeta::setCanonical($configs->url);
+        }
+
+        $seo = Seo::where('page', 'home')->first();
+
+        if($seo){
+
+            // Set SEO meta tags
+            SEOMeta::setTitle('About Us - '.$seo->seo_title);
+            SEOMeta::setDescription($seo->seo_description);
+            SEOMeta::setKeywords($seo->seo_tags); // Set keywords
+            SEOTools::opengraph()->setUrl(url()->current());
+
+            //OpenGraph
+            OpenGraph::setUrl(url()->current());
+            OpenGraph::setTitle($seo->seo_title); // define title
+            OpenGraph::setDescription($seo->seo_description); // define description
+            OpenGraph::setType('webpage');
+            OpenGraph::setUrl(url()->current()); // define url
+            OpenGraph::addImage($img); // add image url
+            OpenGraph::setSiteName($name); // define site_name
+
+            //twitter
+            TwitterCard::setUrl(url()->current()); // url of twitter card tag
+            TwitterCard::setImage($img);
+
+            //JsonLd
+
+            JsonLd::setType('Webpage');
+            JsonLd::setTitle($seo->seo_title);
+            JsonLd::setDescription($seo->seo_description);
+            JsonLd::setUrl(url()->current());
+            JsonLd::addValue('datePublished', $seo->created_at);
+            JsonLd::addValue('dateModified', $seo->updated_at);
+            // JsonLd::addValue('isPartOf', [
+            //     "@type" => "WebSite",
+            //     "@id" => $url,
+            //     "url" => $url
+            // ]);
+            JsonLd::addValue('publisher', [
+                'Organization' => 'Synex Digital',
+                '@type' => 'Webpage',
+                'name' => $name,
+                'url' => $url,
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => $img,
+                    'caption' => $seo->seo_description,
+                    'contentUrl' => url()->current(),
+                ],
+            ]);
+        }
 
         return view('themes.theme1.pages.about', [
             'blog_item' => $blog_item,
@@ -83,11 +201,68 @@ class ContactController extends Controller
         //for logo and favicon
         $configs = Config::first();
 
-        SEOMeta::setTitle('Policy');
-        // SEOMeta::setDescription('Policy page of the site for sites legal information');
-        SEOMeta::setKeywords('dsf, defe, eef');
-        // OpenGraph::setDescription('Policy page of the site for sites legal information');
-        OpenGraph::setTitle('Policy');
+        $img = null;
+        $url = null;
+        $name = null;
+
+        if($configs){
+            $img = url('/').'/'.$configs->logo;
+            $url = $configs->url;
+            $name = $configs->name;
+
+            //canonical
+            SEOMeta::setCanonical($configs->url);
+        }
+
+        $seo = Seo::where('page', 'home')->first();
+
+        if($seo){
+
+            // Set SEO meta tags
+            SEOMeta::setTitle('Policy - '.$seo->seo_title);
+            SEOMeta::setDescription($seo->seo_description);
+            SEOMeta::setKeywords($seo->seo_tags); // Set keywords
+            SEOTools::opengraph()->setUrl(url()->current());
+
+            //OpenGraph
+            OpenGraph::setUrl(url()->current());
+            OpenGraph::setTitle($seo->seo_title); // define title
+            OpenGraph::setDescription($seo->seo_description); // define description
+            OpenGraph::setType('webpage');
+            OpenGraph::setUrl(url()->current()); // define url
+            OpenGraph::addImage($img); // add image url
+            OpenGraph::setSiteName($name); // define site_name
+
+            //twitter
+            TwitterCard::setUrl(url()->current()); // url of twitter card tag
+            TwitterCard::setImage($img);
+
+            //JsonLd
+
+            JsonLd::setType('Webpage');
+            JsonLd::setTitle($seo->seo_title);
+            JsonLd::setDescription($seo->seo_description);
+            JsonLd::setUrl(url()->current());
+            JsonLd::addValue('datePublished', $seo->created_at);
+            JsonLd::addValue('dateModified', $seo->updated_at);
+            // JsonLd::addValue('isPartOf', [
+            //     "@type" => "WebSite",
+            //     "@id" => $url,
+            //     "url" => $url
+            // ]);
+            JsonLd::addValue('publisher', [
+                'Organization' => 'Synex Digital',
+                '@type' => 'Webpage',
+                'name' => $name,
+                'url' => $url,
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => $img,
+                    'caption' => $seo->seo_description,
+                    'contentUrl' => url()->current(),
+                ],
+            ]);
+        }
 
         return view('themes.theme1.pages.policy', [
             'blog_item' => $blog_item,
@@ -105,11 +280,68 @@ class ContactController extends Controller
         //social icons for footer
         $icon = Social::get();
 
-        SEOMeta::setTitle('Contact Us');
-        // SEOMeta::setDescription('Contact page of the site for contact information');
-        SEOMeta::setKeywords('yhgu,ugu,uyu');
-        // OpenGraph::setDescription('Contact page of the site for contact information');
-        OpenGraph::setTitle('Contact Us');
+        $img = null;
+        $url = null;
+        $name = null;
+
+        if($configs){
+            $img = url('/').'/'.$configs->logo;
+            $url = $configs->url;
+            $name = $configs->name;
+
+            //canonical
+            SEOMeta::setCanonical($configs->url);
+        }
+
+        $seo = Seo::where('page', 'home')->first();
+
+        if($seo){
+
+            // Set SEO meta tags
+            SEOMeta::setTitle('Contact Us - '.$seo->seo_title);
+            SEOMeta::setDescription($seo->seo_description);
+            SEOMeta::setKeywords($seo->seo_tags); // Set keywords
+            SEOTools::opengraph()->setUrl(url()->current());
+
+            //OpenGraph
+            OpenGraph::setUrl(url()->current());
+            OpenGraph::setTitle($seo->seo_title); // define title
+            OpenGraph::setDescription($seo->seo_description); // define description
+            OpenGraph::setType('webpage');
+            OpenGraph::setUrl(url()->current()); // define url
+            OpenGraph::addImage($img); // add image url
+            OpenGraph::setSiteName($name); // define site_name
+
+            //twitter
+            TwitterCard::setUrl(url()->current()); // url of twitter card tag
+            TwitterCard::setImage($img);
+
+            //JsonLd
+
+            JsonLd::setType('Webpage');
+            JsonLd::setTitle($seo->seo_title);
+            JsonLd::setDescription($seo->seo_description);
+            JsonLd::setUrl(url()->current());
+            JsonLd::addValue('datePublished', $seo->created_at);
+            JsonLd::addValue('dateModified', $seo->updated_at);
+            // JsonLd::addValue('isPartOf', [
+            //     "@type" => "WebSite",
+            //     "@id" => $url,
+            //     "url" => $url
+            // ]);
+            JsonLd::addValue('publisher', [
+                'Organization' => 'Synex Digital',
+                '@type' => 'Webpage',
+                'name' => $name,
+                'url' => $url,
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => $img,
+                    'caption' => $seo->seo_description,
+                    'contentUrl' => url()->current(),
+                ],
+            ]);
+        }
 
         return view('themes.theme2.pages.contact', [
             'configs' => $configs,
@@ -124,11 +356,68 @@ class ContactController extends Controller
         //contact information
         $configs = Config::first();
 
-        SEOMeta::setTitle('About Us');
-        // SEOMeta::setDescription('About page of the site for sites information');
-        SEOMeta::setKeywords('edfju, kedfn, kk');
-        // OpenGraph::setDescription('About page of the site for sites information');
-        OpenGraph::setTitle('About Us');
+        $img = null;
+        $url = null;
+        $name = null;
+
+        if($configs){
+            $img = url('/').'/'.$configs->logo;
+            $url = $configs->url;
+            $name = $configs->name;
+
+            //canonical
+            SEOMeta::setCanonical($configs->url);
+        }
+
+        $seo = Seo::where('page', 'home')->first();
+
+        if($seo){
+
+            // Set SEO meta tags
+            SEOMeta::setTitle('About Us - '.$seo->seo_title);
+            SEOMeta::setDescription($seo->seo_description);
+            SEOMeta::setKeywords($seo->seo_tags); // Set keywords
+            SEOTools::opengraph()->setUrl(url()->current());
+
+            //OpenGraph
+            OpenGraph::setUrl(url()->current());
+            OpenGraph::setTitle($seo->seo_title); // define title
+            OpenGraph::setDescription($seo->seo_description); // define description
+            OpenGraph::setType('webpage');
+            OpenGraph::setUrl(url()->current()); // define url
+            OpenGraph::addImage($img); // add image url
+            OpenGraph::setSiteName($name); // define site_name
+
+            //twitter
+            TwitterCard::setUrl(url()->current()); // url of twitter card tag
+            TwitterCard::setImage($img);
+
+            //JsonLd
+
+            JsonLd::setType('Webpage');
+            JsonLd::setTitle($seo->seo_title);
+            JsonLd::setDescription($seo->seo_description);
+            JsonLd::setUrl(url()->current());
+            JsonLd::addValue('datePublished', $seo->created_at);
+            JsonLd::addValue('dateModified', $seo->updated_at);
+            // JsonLd::addValue('isPartOf', [
+            //     "@type" => "WebSite",
+            //     "@id" => $url,
+            //     "url" => $url
+            // ]);
+            JsonLd::addValue('publisher', [
+                'Organization' => 'Synex Digital',
+                '@type' => 'Webpage',
+                'name' => $name,
+                'url' => $url,
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => $img,
+                    'caption' => $seo->seo_description,
+                    'contentUrl' => url()->current(),
+                ],
+            ]);
+        }
 
         return view('themes.theme2.pages.about', [
             'icon' => $icon,
@@ -143,11 +432,68 @@ class ContactController extends Controller
         //contact information
         $configs = Config::first();
 
-        SEOMeta::setTitle('Policy');
-        // SEOMeta::setDescription('Policy page of the site for sites legal information');
-        SEOMeta::setKeywords('dsf, defe, eef');
-        // OpenGraph::setDescription('Policy page of the site for sites legal information');
-        OpenGraph::setTitle('Policy');
+        $img = null;
+        $url = null;
+        $name = null;
+
+        if($configs){
+            $img = url('/').'/'.$configs->logo;
+            $url = $configs->url;
+            $name = $configs->name;
+
+            //canonical
+            SEOMeta::setCanonical($configs->url);
+        }
+
+        $seo = Seo::where('page', 'home')->first();
+
+        if($seo){
+
+            // Set SEO meta tags
+            SEOMeta::setTitle('Policy - '.$seo->seo_title);
+            SEOMeta::setDescription($seo->seo_description);
+            SEOMeta::setKeywords($seo->seo_tags); // Set keywords
+            SEOTools::opengraph()->setUrl(url()->current());
+
+            //OpenGraph
+            OpenGraph::setUrl(url()->current());
+            OpenGraph::setTitle($seo->seo_title); // define title
+            OpenGraph::setDescription($seo->seo_description); // define description
+            OpenGraph::setType('webpage');
+            OpenGraph::setUrl(url()->current()); // define url
+            OpenGraph::addImage($img); // add image url
+            OpenGraph::setSiteName($name); // define site_name
+
+            //twitter
+            TwitterCard::setUrl(url()->current()); // url of twitter card tag
+            TwitterCard::setImage($img);
+
+            //JsonLd
+
+            JsonLd::setType('Webpage');
+            JsonLd::setTitle($seo->seo_title);
+            JsonLd::setDescription($seo->seo_description);
+            JsonLd::setUrl(url()->current());
+            JsonLd::addValue('datePublished', $seo->created_at);
+            JsonLd::addValue('dateModified', $seo->updated_at);
+            // JsonLd::addValue('isPartOf', [
+            //     "@type" => "WebSite",
+            //     "@id" => $url,
+            //     "url" => $url
+            // ]);
+            JsonLd::addValue('publisher', [
+                'Organization' => 'Synex Digital',
+                '@type' => 'Webpage',
+                'name' => $name,
+                'url' => $url,
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => $img,
+                    'caption' => $seo->seo_description,
+                    'contentUrl' => url()->current(),
+                ],
+            ]);
+        }
 
         return view('themes.theme2.pages.policy', [
             'icon' => $icon,

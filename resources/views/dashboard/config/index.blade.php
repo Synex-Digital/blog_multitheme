@@ -90,26 +90,38 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
 
-
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Status</label>
-                                <div class="col-sm-9">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="status" value="active" checked>
-                                        <label class="form-check-label">
-                                            Active
-                                        </label>
+                                <div class="form-group col-md-6">
+                                    <label class="col-sm-3 col-form-label">URL</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter websites url" name="url">
+                                        @error('url')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="status" value="inactive">
-                                        <label class="form-check-label">
-                                            Inactive
-                                        </label>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label class="col-sm-3 col-form-label">Status</label>
+                                    <div class="col-sm-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="status" value="active" checked>
+                                            <label class="form-check-label">
+                                                Active
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="status" value="inactive">
+                                            <label class="form-check-label">
+                                                Inactive
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

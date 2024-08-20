@@ -40,6 +40,7 @@ class ConfigController extends Controller
             'address'          => 'required',
             'email'            => 'required',
             'phone'            => 'required',
+            'url'              => 'required',
             'status'           => 'required',
         ]);
         $config = new Config();
@@ -53,6 +54,7 @@ class ConfigController extends Controller
         $config->address        = $request->address;
         $config->email          = $request->email;
         $config->phone          = $request->phone;
+        $config->url            = $request->url;
         $config->status         = $request->status;
         $config->save();
         return back()->with('success', 'Config created successfully');
@@ -87,6 +89,7 @@ class ConfigController extends Controller
             'email'             => 'required',
             'address'           => 'required',
             'phone'             => 'required',
+            'url'               => 'required',
             'status'            => 'required',
         ]);
 
@@ -94,6 +97,7 @@ class ConfigController extends Controller
         $config->email          = $request->email;
         $config->address        = $request->address;
         $config->phone          = $request->phone;
+        $config->url            = $request->url;
         $config->status         = $request->status;
 
 

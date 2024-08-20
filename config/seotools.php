@@ -10,12 +10,12 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Synex Digital Multi-Theme Blogsite", // set false to total remove
+            'title'        => false, // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'Hello, We’re content writer who is fascinated by content food, travel, fashion, celebrity and lifestyle. We helps clients bring the right content.', // set false to total remove
+            'description'  => false, // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
-            'canonical'    => 'current', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
+            'canonical'    => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*

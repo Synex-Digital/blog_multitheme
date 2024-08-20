@@ -85,6 +85,19 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">URL</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control @error('url') is-invalid @enderror" placeholder="Enter websites url" name="url" value="{{ $config->url }}">
+                                    @error('url')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
